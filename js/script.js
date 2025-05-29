@@ -228,7 +228,7 @@ const LucasDCard = {
 	powerup1: "",
 	powerup2: "",
 	powerup3: "",
-	ability1: "AATK-100,1-7///", //100 Damage, -7EP
+	ability1: "AATK-100,1-07///", //100 Damage, -7EP
 	ability2: "AATK-210,1-40ONE", //Attack 210 Damage 1 round, -40EP
 	ability3: "",  
 	ability4: "",
@@ -244,9 +244,25 @@ const NicoleDCard = {
 	powerup1: "",
 	powerup2: "",
 	powerup3: "",
-	ability1: "AATK-065,1-5///", //65 Damage, -5EP
-	ability2: "AATK-040,1-2///", //Attack 40 Damage 1 round, -2EP
+	ability1: "AATK-065,1-05///", //65 Damage, -5EP
+	ability2: "AATK-040,1-02///", //Attack 40 Damage 1 round, -2EP
 	ability3: "",  
+	ability4: "",
+};
+const NivritiDCard = { 
+	cardId: "P31BH3NI",
+	uniqueId: "09",
+	name: "Nivriti",
+	hp: 150,
+	str: 50,
+	dr: 35,
+	powerupsApplied: 0,
+	powerup1: "",
+	powerup2: "",
+	powerup3: "",
+	ability1: "SADR+020,1-06///", //+20 All DR, -6EP
+	ability2: "DSDR+100,1-09///", //make self invincible 1 round, -9EP
+	ability3: "AATK-070,1///D03.AND.SATR+030,1-11N//", //damage -70 1 round and all str +30 1 round for next round, duo ability with erica, -11EP  
 	ability4: "",
 };
 
