@@ -83,8 +83,6 @@ let playerProfile = {
     totalPowerupsApplied: 0,
     totalDamageDealtAcrossAllGames: 0,
     totalHealingDoneAcrossAllGames: 0,
-    mostUsedCard: null, // Card ID or name
-    favoriteHouseTeam: null, // "Fire", "Water", etc.
     
 };
 
@@ -328,6 +326,32 @@ function viewCardsFunc() {
 
 // --- Save Data ---
 function downloadPacks(filename) {
+    const playerProfileCore = {
+        playerName: playerProfile.playerName,
+        lastLogin: playerProfile.lastLogin,
+        coins: playerProfile.coins,
+        xp: playerProfile.xp,
+        level: playerProfile.level,
+        TotalHealth: playerProfile.TotalHealth,
+        TotalEnergy: playerProfile.TotalEnergy,
+        Luckiness: playerProfile.Luckiness,
+        characterCards: playerProfile.characterCards, // This count can stay here
+        totalGamesPlayed: playerProfile.totalGamesPlayed,
+        totalGamesWon: playerProfile.totalGamesWon,
+        totalGamesLost: playerProfile.totalGamesLost,
+        totalCardsKilled: playerProfile.totalCardsKilled,
+        mostCardsKilled: playerProfile.mostCardsKilled,
+        totalEnergySpent: playerProfile.totalEnergySpent,
+        mostEnergySpent: playerProfile.mostEnergySpent,
+        quickestWin: playerProfile.quickestWin,
+        totalPowerupsApplied: playerProfile.totalPowerupsApplied,
+        totalDamageDealtAcrossAllGames: playerProfile.totalDamageDealtAcrossAllGames,
+        totalHealingDoneAcrossAllGames: playerProfile.totalHealingDoneAcrossAllGames,
+    };
+
+    // Stringify and Base64 encode the core player profile data
+    const encodedPlayerProfileCore = encodeBase64(JSON.stringify(playerProfileCore));
+
     const encodedCards = playerProfile.playerProfile.allCharCards.map(function(card) {
         const cardJsonString = JSON.stringify(card);
         return encodeBase64(cardJsonString)
@@ -340,7 +364,7 @@ function downloadPacks(filename) {
     });
 
     const powerupsMultilineString = encodedPowerups = encodedCards.join('\n');
-    const allContent = `${encodedCards}\nsubscribe\n${encodedPowerups}`;
+    const allContent = `${encodedPlayerProfileCore}\nsub\n${encodedCards}\nsubscribe\n${encodedPowerups}`;
 
     // 7. Create and download the Blob
     const blob = new Blob([allContent], { type: "text/plain;charset=utf-8" });
