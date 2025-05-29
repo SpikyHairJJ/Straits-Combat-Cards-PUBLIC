@@ -318,10 +318,16 @@ function downloadPacks(filename) {
     });
     const cardsMultilineString = encodedCards.join('\n'); // make a new line for each function
     
-    const encodedPowerups = 
+    const encodedPowerups = playerProfile.playerProfile.allPowerups.map(function(card) {
+        const cardJsonString = JSON.stringify(card);
+        return encodeBase64(cardJsonString)
+    });
+
+    const powerupsMultilineString = encodedPowerups = encodedCards.join('\n');
+    const allContent = `${encodedCards}\nsubscribe\n${encodedPowerups}`;
 
     // 7. Create and download the Blob
-    const blob = new Blob([/* tbd */], { type: "text/plain;charset=utf-8" });
+    const blob = new Blob([allContent], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
