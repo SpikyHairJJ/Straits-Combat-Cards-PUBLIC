@@ -290,7 +290,7 @@ function drawPackFunc(packNumber) {
     } else if (packNumber == 2) {
         cardsInPack = [KenjiDCard, AllyssaDCard, LucasDCard, NicoleDCard];
     } else if (packNumber == 3) {
-        cardsInPack = ['Nivriti', 'Joe', 'Anna', 'Zinnie'];
+        cardsInPack = [NivritiDCard, 'Joe', AnnaDCard, 'Zinnie'];
     } else if (packNumber == 4) {
 		cardsInPack = ['Arvin', 'Wen Jay', 'Ji Hyo', 'Nicole'];
     }
