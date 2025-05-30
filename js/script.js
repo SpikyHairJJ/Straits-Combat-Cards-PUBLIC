@@ -266,10 +266,10 @@ const NivritiDCard = {
 const AnnaDCard = { 
 	cardId: "P32AA3AN",
 	uniqueId: "10",
-	name: "Nivriti",
+	name: "Anna",
 	hp: 150,
 	str: 50,
-	dr: 35,
+	dr: 25,
 	powerupsApplied: 0,
 	powerup1: "",
 	powerup2: "",
