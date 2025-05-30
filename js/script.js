@@ -276,24 +276,24 @@ const AnnaDCard = {
 	powerup3: "",
 	ability1: "AATK-090,1-07", //90 damage, -7EP
 	ability2: "AATK-130,1-01///", //130 damage 1 round, -1EP
-	ability3: "DSTR+40,1-05N//", //add 40 str next round, -5EP
+	ability3: "DSTR+040,1-05N//", //add 40 str next round, -5EP
 	ability4: "",
 };
 const JoeDCard = { 
-	cardId: "P32AA3AN",
+	cardId: "P34HA4JO",
 	uniqueId: "10",
 	name: "Joe",
 	hp: 150,
 	str: 50,
-	dr: 25,
+	dr: 60,
 	powerupsApplied: 0,
 	powerup1: "",
 	powerup2: "",
 	powerup3: "",
-	ability1: "AATK-090,1-07", //90 damage, -7EP
-	ability2: "AATK-130,1-01///", //130 damage 1 round, -1EP
-	ability3: "DSTR+40,1-05N//", //add 40 str next round, -5EP
-	ability4: "",
+	ability1: "DSDR+030,1-07///", //Self DR +50 1 round, -6EP
+	ability2: "DSTR+040,1-06N//", //130 damage 1 round, -1EP
+	ability3: "AATK-190,1-09///", //damage 220 1 round, -10EP
+	ability4: "AATK-300,1-17///", //damage 300 1 round, -17EP
 };
 
 // ------------------------
