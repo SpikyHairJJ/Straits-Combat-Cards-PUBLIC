@@ -274,9 +274,9 @@ const AnnaDCard = {
 	powerup1: "",
 	powerup2: "",
 	powerup3: "",
-	ability1: "SADR+020,1-06///", //+20 All DR, -6EP
-	ability2: "DSDR+100,1-09///", //make self invincible 1 round, -9EP
-	ability3: "AATK-070,1///D03.AND.SATR+030,1-11N//", //damage -70 1 round and all str +30 1 round for next round, duo ability with erica, -11EP  
+	ability1: "AATK-090,1-07", //90 damage, -7EP
+	ability2: "AATK-130,1-01///", //130 damage 1 round, -1EP
+	ability3: "DSTR+40,1-05N//", //add 40 str next round, -5EP
 	ability4: "",
 };
 
