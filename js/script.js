@@ -279,6 +279,22 @@ const AnnaDCard = {
 	ability3: "DSTR+40,1-05N//", //add 40 str next round, -5EP
 	ability4: "",
 };
+const JoeDCard = { 
+	cardId: "P32AA3AN",
+	uniqueId: "10",
+	name: "Joe",
+	hp: 150,
+	str: 50,
+	dr: 25,
+	powerupsApplied: 0,
+	powerup1: "",
+	powerup2: "",
+	powerup3: "",
+	ability1: "AATK-090,1-07", //90 damage, -7EP
+	ability2: "AATK-130,1-01///", //130 damage 1 round, -1EP
+	ability3: "DSTR+40,1-05N//", //add 40 str next round, -5EP
+	ability4: "",
+};
 
 // ------------------------
 
