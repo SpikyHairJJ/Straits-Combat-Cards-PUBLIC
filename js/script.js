@@ -308,7 +308,7 @@ function drawPackFunc(packNumber) {
     } else if (packNumber == 3) {
         cardsInPack = [NivritiDCard, JoeDCard, AnnaDCard, ZinnieDCard];
     } else if (packNumber == 4) {
-		cardsInPack = [ArvinDCard, 'Wen Jay', 'Ji Hyo', 'Nicole'];
+		cardsInPack = [ArvinDCard, WenJayDCard, JiHyoDCard, NicoleDCard];
     }
 	
     let randomCard; // Declare randomCard outside the loop
