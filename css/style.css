@@ -1,4 +1,8 @@
-
+#versionNum {
+  color:whitesmoke;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
 
 body {
   display: flex;

@@ -11,7 +11,7 @@ let importDeck = document.getElementById("importData");
 let fileInput = document.getElementById("fileInput");
 let deletedRepeated = document.getElementById("deleteRepeated")
 
-// --- Event Listensers---
+// --- Event Listensers ---
 drawPack1.addEventListener("click", function() {
     drawPackFunc(1); // Now this function is called only when the click event happens
 });
