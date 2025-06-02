@@ -101,7 +101,7 @@ Next Three Letters is What is Does (SDR means Self DR, ADR maeans All DR, ATK me
 Next Three Characters is How Much (+40 means adds 40 to a stat, 050 maybe may mean 50 attack damage or 50 heal for each, operators can be + or x
 After the comma is how many rounds this lasts or during attack (1 For all atk abilities)
 After the dash is how many energy points it takes (1,2,3 etc)
-After the energy points is remarks (RSO means RUSA ONLY (the r means rusa) D(unqiueId) is duo ability, ONE means can be used one time only /// means no remarks)
+After the energy points is remarks (RSO means RUSA ONLY (the rs means rusa) D(unqiueId) is duo ability, ONE means can be used one time only /// means no remarks)
 After AND there might be another part to the ability and damage points will be at the very end
 
 The Max is always 210 for HP UNLESS IT IS +Percantage HP and 100 for STR and 90 for DR
