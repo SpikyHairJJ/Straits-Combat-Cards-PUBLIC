@@ -136,7 +136,7 @@ const FayyadhDCard = {
 	ability4: "",
 };
 const XilinDCard = {
-	cardId: "P12RS3XI",
+	cardId: "P12RS4XI",
 	uniqueId: "02",
 	name: "Xilin",
 	hp: 140,
@@ -149,7 +149,7 @@ const XilinDCard = {
 	ability1: "DADR+030,1///N//.AND.SHEL+5,5-08///", //DR +30 for all in-play cards including self for NEXT ROUND and heal +5 each round for 5 rounds, -8EP
 	ability2: "SHEL+020,2-06RSO", //Heal 20HP for each round for 2 rounds including self for RUSA cards only, -6EP
 	ability3: "SAKDx002,1-10N//", //Attack Damage Multiplier for NEXT ROUND x2 for all, -10EP
-	ability4: "",
+	ability4: "SHEP+200,1-15///", //Heal player 200HP, -15EP
 };
 const EricaDCard = {
 	cardId: "P13NA3ER",
@@ -295,8 +295,23 @@ const JoeDCard = {
 	ability3: "AATK-190,1-09///", //damage 220 1 round, -10EP
 	ability4: "AATK-300,1-17///", //damage 300 1 round, -17EP
 };
-
-// ------------------------
+const ZinnieDCard = { 
+	cardId: "P33HS3ZI",
+	uniqueId: "11",
+	name: "Zinnie",
+	hp: 140,
+	str: 50,
+	dr: 30,
+	powerupsApplied: 0,
+	powerup1: "",
+	powerup2: "",
+	powerup3: "",
+	ability1: "SATR+050,1-09N//", //All STR +50 1 round next, -9EP
+	ability2: "SHEL+010,3-04///", //Heal 10HP each round for 3 rounds all cards including self, -4EP
+	ability3: "SHEL+060,1-07///", //Heal 60HP 1 round all cards including self, -7EP
+	ability4: ""
+};
+// ------------------------ 
 
 // --- Draw a Char Card ---
 function drawPackFunc(packNumber) {
@@ -308,7 +323,7 @@ function drawPackFunc(packNumber) {
     } else if (packNumber == 3) {
         cardsInPack = [NivritiDCard, JoeDCard, AnnaDCard, ZinnieDCard];
     } else if (packNumber == 4) {
-		cardsInPack = [ArvinDCard, WenJayDCard, JiHyoDCard, NicoleDCard];
+		cardsInPack = [ArvinDCard, WenJayDCard, JiHyoDCard, OliviaDCard];
     }
 	
     let randomCard; // Declare randomCard outside the loop
