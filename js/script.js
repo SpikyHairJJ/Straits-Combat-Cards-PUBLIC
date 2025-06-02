@@ -90,7 +90,7 @@ let playerProfile = {
 First 2 digits is Pack Number (P1, P2)
 Third Char is order in pack (1, 2, 3, 4)
 Fourth Char is first letter of house (N, H, B, R)
-Fifth Char is first letter of class (A for Attack, S Surpport, D for Defense H for Hybrid (like zinnie got a and s abilities))
+Fifth Char is first letter of class (A for Attack, S Surpport, H for Hybrid (like zinnie got a and s abilities))
 Sixth Char is number of abilities (1, 2, 3, 4)
 Seventh and Eigth Char is first two letters of name (FA, XI)
 */
