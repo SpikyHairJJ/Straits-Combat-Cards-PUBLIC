@@ -56,7 +56,9 @@ let playerProfile = {
     TotalEnergy: 55,   // Their overall TLEP starting point for any game
     Luckiness: 80,     // Their overall TLCK starting point for any game
     TotalHealthRegen: 5, // Their overall TLHR in HP/Round starting point for any game
+    powerupsApplied: [
 
+    ],
     // --- Card Collection (All cards they OWN, not just in a single deck) ---
     // This is where ALL their character card objects reside.
     // They would then build a 7-card deck for a specific game session from this collection.
@@ -72,6 +74,10 @@ let playerProfile = {
         
     ],
 
+    // --- Decks ---
+    cardDeck1: [],
+    cardDeck2: [],
+    cardDeck3: [],
     // --- Overall Game Statistics (Fun Facts!) ---
     totalGamesPlayed: 0,
     totalGamesWon: 0,
@@ -108,22 +114,26 @@ After AND there might be another part to the ability and damage points will be a
 The Max is always 210 for HP UNLESS IT IS +Percantage HP and 100 for STR and 90 for DR
 */
 
-/* RR-THP/+020-MAX210  OR  EP-S0001/////////: Powerup id explanation
-First two letters is Rarity (CC for Common, RR for Rare, EP for Epic, LG for Legendary)
+/* CR-THP/+020-MAX210,2  OR  CE-S0001/////////,2: Powerup id explanation
+First Letter if it is a card or defend powerup (C for card and P for player, d is for defend)
+Second letter is Rarity (C for Common, R for Rare, E for Epic, L for Legendary)
 After the dash 1 letter is Stat(T) Powerup or Special Ability(P) Powerup
 IF IT IS STAT POWERUP
-Next three chars is what stat (HP/ for HP, STR for STR, DR/ for DR. the / is to make it 3 char)
+Next three chars is what stat (HP/ for HP, STR for STR, DR/ for DR, ALL for all stats. the / is to make it 3 char)
 Next four chars is add how much (+020 is add 20, +110 is add 110)
-After the dash is maximum of how much (if it is MAX210, and a +080 goes over 210, it will set it to 210)
+After the dash is maximum of how much (if it is MAX210, and a +080 goes over 210, it will set it to 210, if there is no MAX it will be MAX///, if max is just the card max it will be MAXcrd)
+After the comma is how much TLEP it deducts
 
 IF IT IS SPECIAL ABILITY POWERUP
 After the dash if the code for special ability, each one has a unqiue number code, regardless of rarity
 The slashes is to makke it the same length as a Stat Powerip
+After the comma is how much TLEP it deducts
 */
 const FayyadhDCard = {
 	cardId: "P11NA2FA",
 	uniqueId: "01",
 	name: "Fayyadh",
+    collectionId: "",
 	hp: 150,
 	str: 55,
 	dr: 20,
@@ -140,6 +150,7 @@ const XilinDCard = {
 	cardId: "P12RS4XI",
 	uniqueId: "02",
 	name: "Xilin",
+    collectionId: "",
 	hp: 140,
 	str: 60,
 	dr: 50,
@@ -156,6 +167,7 @@ const EricaDCard = {
 	cardId: "P13NA3ER",
 	uniqueId: "03",
 	name: "Erica",
+    collectionId: "",
 	hp: 160,
 	str: 60,
 	dr: 45,
@@ -172,6 +184,7 @@ const KaiYueDCard = { //TBD!!
 	cardId: "P14BA3KA",
 	uniqueId: "04",
 	name: "Kai Yue",
+    collectionId: "",
 	hp: 155,
 	str: 65,
 	dr: 30,
@@ -188,6 +201,7 @@ const KenjiDCard = {
 	cardId: "P21RA2KE",
 	uniqueId: "05",
 	name: "Kenji",
+    collectionId: "",
 	hp: 195,
 	str: 30,
 	dr: 75,
@@ -204,6 +218,7 @@ const AllyssaDCard = {
 	cardId: "P22HA3AL",
 	uniqueId: "06",
 	name: "Allyssa",
+    collectionId: "",
 	hp: 150,
 	str: 55,
 	dr: 45,
@@ -220,6 +235,7 @@ const LucasDCard = {
 	cardId: "P23RA2LU",
 	uniqueId: "07",
 	name: "Lucas",
+    collectionId: "",
 	hp: 205,
 	str: 83,
 	dr: 60,
@@ -236,6 +252,7 @@ const NicoleDCard = {
 	cardId: "P24BA2NI",
 	uniqueId: "08",
 	name: "Nicole",
+    collectionId: "",
 	hp: 150,
 	str: 55,
 	dr: 25,
@@ -252,6 +269,7 @@ const NivritiDCard = {
 	cardId: "P31BH3NI",
 	uniqueId: "09",
 	name: "Nivriti",
+    collectionId: "",
 	hp: 150,
 	str: 50,
 	dr: 35,
@@ -268,6 +286,7 @@ const AnnaDCard = {
 	cardId: "P32AA3AN",
 	uniqueId: "10",
 	name: "Anna",
+    collectionId: "",
 	hp: 150,
 	str: 50,
 	dr: 25,
@@ -284,6 +303,7 @@ const JoeDCard = {
 	cardId: "P34HA4JO",
 	uniqueId: "10",
 	name: "Joe",
+    collectionId: "",
 	hp: 150,
 	str: 50,
 	dr: 60,
@@ -300,6 +320,7 @@ const ZinnieDCard = {
 	cardId: "P33HS3ZI",
 	uniqueId: "11",
 	name: "Zinnie",
+    collectionId: "",
 	hp: 140,
 	str: 50,
 	dr: 30,
@@ -313,6 +334,22 @@ const ZinnieDCard = {
 	ability4: ""
 };
 // ------------------------ 
+
+// --- Powerups Array ---
+let Powerups = [
+    {name: "Increase HP by 20", id: "CC-THP/+020MAXcrd,2"},
+    {name: "Incease STR by 10", id: "CC-TSTR+010MAXcrd,2"},
+    {name: "Increase DR by 10", id: "CC-TDR/+010MAXcrd,2"},
+    {name: "Increase HP by 22", id: "CC-THP/+025MAXcrd,3"},
+    {name: "Increase STR by 12", id: "CC-TSTR+012MAXcrd,3"},
+    {name: "Increase DR by 12", id: "CC-TDR/+012MAXcrd,3"},
+    {name: "Increase All Stats by 5", id: "CC-TALL+003MAXcrd,3"},
+    {name: "", id: ""},
+    {name: "", id: ""},
+    {name: "", id: ""},
+    {name: "", id: ""},
+    {name: "", id: ""},
+];
 
 // --- Draw a Char Card ---
 function drawPackFunc(packNumber) {
@@ -344,6 +381,7 @@ function drawPackFunc(packNumber) {
     console.log(`Successfully drew: ${randomCard.name} from Pack${packNumber}. Tries: ${drawTries}`);
     playerProfile.allCharCards.push({...randomCard});
     playerProfile.characterCards++
+    playerProfile.allCharCards[playerProfile.allCharCards.length-1].collectionId = toString(characterCards);
 }
 
 // --- Draw a Powerup ---
@@ -367,7 +405,13 @@ function drawPowerupFunc() {
 
 // --- View cards ---
 function viewCardsFunc() {
-	console.log(`All Character Cards: ${playerProfile.allCharCards}`);
+    const text = playerProfile.allCharCards.map(function(card) {
+    return card.name; // This will return the 'name' property of each 'card' object
+    }).join(', ');
+	console.log(`All Character Cards: ${text}`);
+    const text2 = playerProfile.allPowerups.map(function(card) {
+    return card.name; // This will return the 'name' property of each 'card' object
+}).join(', '); // Optional: Join the array of names into a single string with commas
 	console.log(`All Powerups: ${playerProfile.allPowerups}`);
 }
 
