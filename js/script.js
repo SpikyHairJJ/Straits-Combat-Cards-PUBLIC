@@ -55,7 +55,7 @@ let playerProfile = {
     TotalHealth: 320, // Their overall TLHP starting point for any game
     TotalEnergy: 55,   // Their overall TLEP starting point for any game
     Luckiness: 80,     // Their overall TLCK starting point for any game
-    TotalHealthRegen: 5, // Their overall TLHR in HP/Round starting point for any game
+    TotalHealthRegen: 5, // Their overall TLHR in HP/Turn starting point for any game
     powerupsApplied: [
 
     ],
@@ -70,7 +70,7 @@ let playerProfile = {
     // --- Powerup Inventory (All powerups they OWN) ---
     // These are the raw powerup items they've acquired.
     // They would then "apply" some to their cards, or choose defend powerups for a game.
-    allPowerups: [
+    allPowerups: [ // Unapplied powerups
         
     ],
 
@@ -426,6 +426,7 @@ function downloadPacks(filename) {
         TotalHealth: playerProfile.TotalHealth,
         TotalEnergy: playerProfile.TotalEnergy,
         Luckiness: playerProfile.Luckiness,
+        TotalHealthRegen: playerProfile.TotalHealthRegen,
         characterCards: playerProfile.characterCards, // This count can stay here
         totalGamesPlayed: playerProfile.totalGamesPlayed,
         totalGamesWon: playerProfile.totalGamesWon,
@@ -455,7 +456,36 @@ function downloadPacks(filename) {
     });
 
     const powerupsMultilineString = encodedPowerups.join('\n');
-    const allContent = `${encodedPlayerProfileCore}\nsub\n${cardsMultilineString}\nsub\n${powerupsMultilineString}`;
+
+    const encodedPlayerAppliedPowerups = playerProfile.powerupsApplied.map(function(powerup){
+        const cardJsonString = JSON.stringify(powerup);
+        return encodeBase64(cardJsonString)
+    });
+
+    const playerAppliedPowerupsMultilineString = encodedPlayerAppliedPowerups .join('\n')
+
+    const encodedDeck1 = playerProfile.cardDeck1.map(function(card){
+        const cardJsonString = JSON.stringify(card);
+        return encodeBase64(cardJsonString)
+    });
+    
+    const deck1MultilineString = encodedDeck1.join('\n');
+
+    const encodedDeck2 = playerProfile.cardDeck1.map(function(card){
+        const cardJsonString = JSON.stringify(card);
+        return encodeBase64(cardJsonString)
+    });
+    
+    const deck2MultilineString = encodedDeck2.join('\n');
+
+    const encodedDeck3 = playerProfile.cardDeck1.map(function(card){
+        const cardJsonString = JSON.stringify(card);
+        return encodeBase64(cardJsonString)
+    });
+    
+    const deck3MultilineString = encodedDeck3.join('\n');
+
+    const allContent = `${encodedPlayerProfileCore}\nsub\n${cardsMultilineString}\nsub\n${powerupsMultilineString}\nsub\n${playerAppliedPowerupsMultilineString}\nsub\n${deck1MultilineString}\nsub\n${deck2MultilineString}\nsub\n${deck3MultilineString}`;
 
     // 7. Create and download the Blob
     const blob = new Blob([allContent], { type: "text/plain;charset=utf-8" });
@@ -468,7 +498,6 @@ function downloadPacks(filename) {
 
     // Log the original and encrypted data for debugging TBD
 }
-
 
 // --- Import Data ---
 fileInput.addEventListener('change', (event) => {
