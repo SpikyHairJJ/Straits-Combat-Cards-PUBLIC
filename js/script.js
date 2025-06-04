@@ -55,6 +55,7 @@ let playerProfile = {
     TotalHealth: 320, // Their overall TLHP starting point for any game
     TotalEnergy: 55,   // Their overall TLEP starting point for any game
     Luckiness: 80,     // Their overall TLCK starting point for any game
+    TotalHealthRegen: 5, // Their overall TLHR in HP/Round starting point for any game
 
     // --- Card Collection (All cards they OWN, not just in a single deck) ---
     // This is where ALL their character card objects reside.
@@ -398,19 +399,19 @@ function downloadPacks(filename) {
     // Stringify and Base64 encode the core player profile data
     const encodedPlayerProfileCore = encodeBase64(JSON.stringify(playerProfileCore));
 
-    const encodedCards = playerProfile.playerProfile.allCharCards.map(function(card) {
+    const encodedCards = playerProfile.allCharCards.map(function(card) {
         const cardJsonString = JSON.stringify(card);
         return encodeBase64(cardJsonString)
     });
     const cardsMultilineString = encodedCards.join('\n'); // make a new line for each function
     
-    const encodedPowerups = playerProfile.playerProfile.allPowerups.map(function(card) {
+    const encodedPowerups = playerProfile.allPowerups.map(function(card) {
         const cardJsonString = JSON.stringify(card);
         return encodeBase64(cardJsonString)
     });
 
-    const powerupsMultilineString = encodedPowerups = encodedCards.join('\n');
-    const allContent = `${encodedPlayerProfileCore}\nsub\n${encodedCards}\nsubscribe\n${encodedPowerups}`;
+    const powerupsMultilineString = encodedPowerups.join('\n');
+    const allContent = `${encodedPlayerProfileCore}\nsub\n${cardsMultilineString}\nsub\n${powerupsMultilineString}`;
 
     // 7. Create and download the Blob
     const blob = new Blob([allContent], { type: "text/plain;charset=utf-8" });
