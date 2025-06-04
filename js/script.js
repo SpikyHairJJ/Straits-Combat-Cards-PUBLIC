@@ -62,7 +62,7 @@ let playerProfile = {
     // --- Card Collection (All cards they OWN, not just in a single deck) ---
     // This is where ALL their character card objects reside.
     // They would then build a 7-card deck for a specific game session from this collection.
-    characterCards: 0,
+    characterCards: 0, // Number of cards they own, not the cards themself
     allCharCards: [
 
     ],
