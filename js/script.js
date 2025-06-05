@@ -53,7 +53,7 @@ let playerProfile = {
 
     // --- Player Base Stats (Affected by upgrades/XP, applies to all games they play) ---
     TotalHealth: 320, // Their overall TLHP starting point for any game
-    TotalEnergy: 55,   // Their overall TLEP starting point for any game
+    TotalEnergy: 50,   // Their overall TLEP starting point for any game
     Luckiness: 80,     // Their overall TLCK starting point for any game
     TotalHealthRegen: 5, // Their overall TLHR in HP/Turn starting point for any game
     powerupsApplied: [
@@ -119,8 +119,8 @@ First Letter if it is a card or defend powerup (C for card and P for player, d i
 Second letter is Rarity (C for Common, R for Rare, E for Epic, L for Legendary)
 After the dash 1 letter is Stat(T) Powerup or Special Ability(P) Powerup
 IF IT IS STAT POWERUP
-Next three chars is what stat (HP/ for HP, STR for STR, DR/ for DR, ALL for all stats. the / is to make it 3 char)
-Next four chars is add how much (+020 is add 20, +110 is add 110)
+Next three chars is what stat (HP/ for HP, STR for STR, DR/ for DR, ALL for all stats, CEP is card abilities anergy usage, PEP is player EP boost, EXT is extra in-play card the / is to make it 3 char)
+Next four chars is add how much (+020 is add 20, +110 is add 110, if it is a EXT type powerup, then it willb e the furst three letters of House or if no limititation is willl be NHR, This EXT ability only can be applied once per deck)
 After the dash is maximum of how much (if it is MAX210, and a +080 goes over 210, it will set it to 210, if there is no MAX it will be MAX///, if max is just the card max it will be MAXcrd)
 After the comma is how much TLEP it deducts
 
@@ -337,6 +337,8 @@ const ZinnieDCard = {
 
 // --- Powerups Array ---
 let Powerups = [
+    // CARD POWERUPS
+    // Common
     {name: "Increase HP by 20", id: "CC-THP/+020MAXcrd,2"},
     {name: "Incease STR by 10", id: "CC-TSTR+010MAXcrd,2"},
     {name: "Increase DR by 10", id: "CC-TDR/+010MAXcrd,2"},
@@ -344,11 +346,33 @@ let Powerups = [
     {name: "Increase STR by 12", id: "CC-TSTR+012MAXcrd,3"},
     {name: "Increase DR by 12", id: "CC-TDR/+012MAXcrd,3"},
     {name: "Increase All Stats by 5", id: "CC-TALL+003MAXcrd,3"},
+    {name: "Reduce Energy Used by Abilities by 1", id: "CC-TCEP-001MAXcrd,5"},
+    {name: "Reduce Energy Used by Abilities by 2", id: "CC-TCEP-002MAXcrd,6"},
+    // Rare
+    {name: "Increase HP by 30", id: "CR-THP/+030MAXcrd,2"},
+    {name: "Increase STR by 18", id: "CR-TSTR+018MAXcrd,3"},
+    {name: "Increase DR by 18", id: "CR-TSTR+018MAXcrd,4"},
+    {name: "Increase HP by 20 [FREE]", id: "CR-THP/+020MAXcrd,0"},
+    {name: "Increase STR by 10 [FREE]", id: "CR-TSTR+010MAXcrd,0"},
+    {name: "Increase DR by 10 [FREE]", id: "CR-TDR/+010MAXcrd,0"},
+    {name: "Increase All Stats by 15", id: "CR-TALL+015MAXcrd,5"},
+    {name: "Reduce Energy Used by Abilities by 5", id: "CR-TCEP-010MAXcrd,13"},
+    // Epic
+    {name: "Increase HP by 50 [FREE] [NO LIMIT]", id: "CE-THP/+050MAX///,0"},
+    {name: "Increase HP by 70 [NO LIMIT]", id: "CE-THP/+070MAX///,10"},
+    {name: "Increase STR by 35 [FREE] [NO LIMIT]", id: "CE-TSTR+035MAX///,0"},
+    {name: "Increase STR by 50 [NO LIMIT]", id: "CE-TSTR+050MAX///,17"},
+    {name: "Have a Extra NAGA card in your in-play deck [NAGA ONLY] [ONE PER DECK]", id: "CE-TEXTNAG,20"},
+    {name: "Have a Extra RUSA card in your in-play deck [RUSA ONLY] [ONE PER DECK]", id: "CE-TEXTRUS,20"},
+    {name: "Have a Extra HARIMAU card in your in-play deck [HARIMAU ONLY] [ONE PER DECK]", id: "CE-TEXTHAR,20"},
+    {name: "Have a Extra BK card in your in-play deck [BK ONLY] [ONE PER DECK]", id: "CE-TEXTBUR,20"},
+    // Legendary
+    {name: "Max out ALL STATS", id: "CL-TALL+210MAXcrd,25"},
+    {name: "Have an Extra card in your in-play deck", id: "CL-TEXTNHR,25"},
+    {name: "Double your STR", id: "CL-TSTRx002MAX///,19"},
     {name: "", id: ""},
     {name: "", id: ""},
-    {name: "", id: ""},
-    {name: "", id: ""},
-    {name: "", id: ""},
+
 ];
 
 // --- Draw a Char Card ---
@@ -381,7 +405,7 @@ function drawPackFunc(packNumber) {
     console.log(`Successfully drew: ${randomCard.name} from Pack${packNumber}. Tries: ${drawTries}`);
     playerProfile.allCharCards.push({...randomCard});
     playerProfile.characterCards++
-    playerProfile.allCharCards[playerProfile.allCharCards.length-1].collectionId = toString(characterCards);
+    playerProfile.allCharCards[playerProfile.allCharCards.length-1].collectionId = toString(playerProfile.characterCards);
 }
 
 // --- Draw a Powerup ---
@@ -394,11 +418,11 @@ function drawPowerupFunc() {
   } else if (rarityChance  < 0.05) {
     console.log("Result: Epic"); // 4% chance
 	playerProfile.allPowerups.push('Epic');
-  } else if (rarityChance < 0.35) {
-    console.log ("Result: Rare"); // 15% chance
+  } else if (rarityChance < 0.40) {
+    console.log ("Result: Rare"); // 35% chance
 	playerProfile.allPowerups.push('Rare');
   } else {
-    console.log("Result: Common"); // 80% chance
+    console.log("Result: Common"); // 60% chance
 	playerProfile.allPowerups.push('Common');
   }
 }
@@ -406,12 +430,12 @@ function drawPowerupFunc() {
 // --- View cards ---
 function viewCardsFunc() {
     const text = playerProfile.allCharCards.map(function(card) {
-    return card.name; // This will return the 'name' property of each 'card' object
+        return card.name; // This will return the 'name' property of each 'card' object
     }).join(', ');
 	console.log(`All Character Cards: ${text}`);
     const text2 = playerProfile.allPowerups.map(function(card) {
-    return card.name; // This will return the 'name' property of each 'card' object
-}).join(', '); // Optional: Join the array of names into a single string with commas
+        return card.name; // This will return the 'name' property of each 'card' object
+    }).join(', '); // Optional: Join the array of names into a single string with commas
 	console.log(`All Powerups: ${playerProfile.allPowerups}`);
 }
 
