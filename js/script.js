@@ -52,7 +52,7 @@ let playerProfile = {
     level: 1, // Derived from XP, or direct level
 
     // --- Player Base Stats (Affected by upgrades/XP, applies to all games they play) ---
-    TotalHealth: 320, // Their overall TLHP starting point for any game
+    TotalHealth: 165, // Their overall TLHP starting point for any game
     TotalEnergy: 50,   // Their overall TLEP starting point for any game
     Luckiness: 80,     // Their overall TLCK starting point for any game
     TotalHealthRegen: 5, // Their overall TLHR in HP/Turn starting point for any game
@@ -119,7 +119,7 @@ First Letter if it is a card or defend powerup (C for card and P for player, d i
 Second letter is Rarity (C for Common, R for Rare, E for Epic, L for Legendary)
 After the dash 1 letter is Stat(T) Powerup or Special Ability(P) Powerup
 IF IT IS STAT POWERUP
-Next three chars is what stat (HP/ for HP, STR for STR, DR/ for DR, ALL for all stats, CEP is card abilities anergy usage, PEP is player EP boost, EXT is extra in-play card the / is to make it 3 char)
+Next three chars is what stat (HP/ for HP, STR for STR, DR/ for DR, ALL for all stats, CEP is card abilities anergy usage, EXT is extra in-play card, PHP means TLHP, PEP means TLEP, PLK means TLCK, PHR means TLHR. XPB means XP boost, CNB means coin boost, EDS means extra deeck slot. PDR means player DR the / is to make it 3 char)
 Next four chars is add how much (+020 is add 20, +110 is add 110, if it is a EXT type powerup, then it willb e the furst three letters of House or if no limititation is willl be NHR, This EXT ability only can be applied once per deck)
 After the dash is maximum of how much (if it is MAX210, and a +080 goes over 210, it will set it to 210, if there is no MAX it will be MAX///, if max is just the card max it will be MAXcrd)
 After the comma is how much TLEP it deducts
@@ -336,7 +336,7 @@ const ZinnieDCard = {
 // ------------------------ 
 
 // --- Powerups Array ---
-let Powerups = [
+let cardPowerupsLib = [
     // CARD POWERUPS
     // Common
     {name: "Increase HP by 20", id: "CC-THP/+020MAXcrd,2"},
@@ -370,9 +370,60 @@ let Powerups = [
     {name: "Max out ALL STATS", id: "CL-TALL+210MAXcrd,25"},
     {name: "Have an Extra card in your in-play deck", id: "CL-TEXTNHR,25"},
     {name: "Double your STR", id: "CL-TSTRx002MAX///,19"},
-    {name: "", id: ""},
-    {name: "", id: ""},
-
+];
+let playerPowerupsLib = [
+    // PLAYER POWERUPS
+    // Common
+    {name: "Increase TLHP by 30", id: "PC-TPHP+030MAX///,6"},
+    {name: "Increase TLEP by 15", id: "PC-TPEP+015MAX///,16"},
+    {name: "Increase TLCK by 2", id: "PC-TPLK+002MAX100,1"},
+    {name: "Increase TLHR by 4", id: "PC-TPHR+004MAX///,4"},
+    {name: "10% XP Boost", id: "PC-TXPB%010MAX///,3"},
+    {name: "10% Coin Boost", id: "PC-TCNB%010MAX///,4"},
+    // Rare
+    {name: "Increase TLHP by 45", id: "PR-TPHP+045MAX///,13"},
+    {name: "Increase TLEP by 30", id: "PR-TPEP+030MAX///,38"},
+    {name: "Increase TLCK by 7", id: "PR-TPLK+007MAX100,3"},
+    {name: "Increase TLHR by 8", id: "PR-TPHR+008MAX///,14"},
+    {name: "20% XP Boost", id: "PR-TXPB%020MAX///,8"},
+    {name: "20% Coin Boost", id: "PR-TCNB%020MAX///,12"},
+    // Epic
+    {name: "Increase TLHP by 50", id: "PE-TPHP+050MAX///,17"},
+    {name: "Increase TLEP by 40", id: "PE-TPEP+015MAX///,42"},
+    {name: "Increase TLCK by 15", id: "PE-TPLK+015MAX100,16"},
+    {name: "Increase TLHR by 10", id: "PE-TPHR+010MAX///,23"},
+    {name: "30% XP Boost", id: "PE-TXPB%030MAX///,12"},
+    {name: "30% Coin Boost", id: "PE-TCNB%030MAX///,17"},
+    {name: "Extra Deck Slot [One per Profile]", id: "PE-TEDS+001///,26"},
+    {name: "2 Extra Deck Slots [One per Profile]", id: "PE-TEDS+002///,38"},
+    // Legendary
+    {name: "Increase TLHP by 75", id: "PL-TPHP+075MAX///,27"},
+    {name: "Increase TLHP by 50 [FREE]", id: "PL-TPHP+050MAX///,0"},
+    {name: "Increase TLEP by 60", id: "PL-TPEP+015MAX///,65"},
+    {name: "Max Out Luckiness", id: "PL-TPLK+100MAX100,34"},
+    {name: "Increase TLHR by 25", id: "PL-TPHR+010MAX///,37"},
+    {name: "50% XP Boost", id: "PL-TXPB%050MAX///,21"},
+    {name: "50% Coin Boost", id: "PL-TCNB%050MAX///,23"},
+    {name: "Extra Deck Slot [One per Profile] [FREE]", id: "PL-TEDS+001///,0"},
+    {name: "2 Extra Deck Slots [One per Profile]", id: "PL-TEDS+002///,21"},
+    {name: "3 Extra Deck Slots [One per Profile]", id: "PL-TEDS+003///,67"},
+];
+let defendPowerupsLib = [
+    // DEFEND POWERUPS
+    // Common
+    {name: "10% Damage Resistence", id: "DC-TPDR%010MAX100,8"},
+    {name: "20% Damage Resistence", id: "DC-TPDR%020MAX100,11"},
+    {name: "25% Damage Resistence", id: "DC-TPDR%025MAX100,16"},
+    // Rare
+    {name: "10% Damage Resistence [FREE]", id: "DC-TPDR%010MAX100,0"},
+    {name: "25% Damage Resistence [FREE]", id: "DC-TPDR%025MAX100,0"},
+    {name: "35% Damage Resistence", id: "DC-TPDR%035MAX100,19"},
+    // Epic 
+    {name: "35% Damage Resistence [FREE]", id: "DC-TPDR%010MAX100,0"},
+    {name: "50% Damage Resistence", id: "DC-TPDR%050MAX100,25"},
+    {name: "100% Damage Resistence", id: "DC-TPDR%100MAX100,52"},
+    // Legendary
+    {name: "100% Damage Resistence [FREE]", id: "DC-TPDR%100MAX100,0"},
 ];
 
 // --- Draw a Char Card ---
