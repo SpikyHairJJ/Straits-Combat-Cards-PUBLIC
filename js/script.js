@@ -463,19 +463,25 @@ function drawPackFunc(packNumber) {
 function drawPowerupFunc() {
 	console.log("drawPowerupFunc called")
   const rarityChance = Math.random();
+  let rarity = "Null";
   if (rarityChance < 0.01) {
-    console.log("Result: Legendary"); // 1% chance
-	playerProfile.allPowerups.push('Legendary');
+    console.log("Rarity: Legendary"); // 1% chance
+    rarity = "L";
   } else if (rarityChance  < 0.05) {
     console.log("Result: Epic"); // 4% chance
-	playerProfile.allPowerups.push('Epic');
+    rarity = "E";
   } else if (rarityChance < 0.40) {
     console.log ("Result: Rare"); // 35% chance
-	playerProfile.allPowerups.push('Rare');
+    rarity = "R";
   } else {
     console.log("Result: Common"); // 60% chance
-	playerProfile.allPowerups.push('Common');
+    rarity = "C";
   }
+  const allPowerups = [...cardPowerupsLib,...playerPowerupsLib,...defendPowerupsLib];
+  let eligiblePowerups = allPowerups.filter(item => item.id[1] === targetRarityInitial);
+  const randomPowerupIndex = Math.floor(Math.random() * eligiblePowerups.length);
+  const drawnPowerup = eligiblePowerups[randomPowerupIndex]
+  playerProfile.allPowerups.push(drawnPowerup);
 }
 
 // --- View cards ---
