@@ -104,7 +104,7 @@ Seventh and Eigth Char is first two letters of name (FA, XI)
 
 /* DSDR+40,1-5///: abilityIdGuide
 First Letter is Ability Class (A, D, S Attack, Defense, Surpport)
-Next Three Letters is What is Does (SDR means Self DR, ADR maeans All DR, ATK means Attack, AKD means all s attack damage multiplier, HEL means Heal, ATR means all strength, SHP means self hp, STR is for self strength)
+Next Three Letters is What is Does (SDR means Self DR, DDR means duo ability both dr. DTR means duo bility both str ADR maeans All DR, ATK means Attack, AKD means all s attack damage multiplier, HEL means Heal, ATR means all strength, SHP means self hp, STR is for self strength)
 Next Three Characters is How Much (+40 means adds 40 to a stat, 050 maybe may mean 50 attack damage or 50 heal for each, operators can be + or x
 After the comma is how many rounds this lasts or during attack (1 For all atk abilities)
 After the dash is how many energy points it takes (1,2,3 etc)
@@ -133,7 +133,7 @@ const FayyadhDCard = {
 	cardId: "P11NA2FA",
 	uniqueId: "01",
 	name: "Fayyadh",
-    collectionId: "",
+    collectionId: "0",
 	hp: 150,
 	str: 55,
 	dr: 20,
@@ -150,7 +150,7 @@ const XilinDCard = {
 	cardId: "P12RS4XI",
 	uniqueId: "02",
 	name: "Xilin",
-    collectionId: "",
+    collectionId: "0",
 	hp: 140,
 	str: 60,
 	dr: 50,
@@ -167,7 +167,7 @@ const EricaDCard = {
 	cardId: "P13NA3ER",
 	uniqueId: "03",
 	name: "Erica",
-    collectionId: "",
+    collectionId: "0",
 	hp: 160,
 	str: 60,
 	dr: 45,
@@ -184,7 +184,7 @@ const KaiYueDCard = { //TBD!!
 	cardId: "P14BA3KA",
 	uniqueId: "04",
 	name: "Kai Yue",
-    collectionId: "",
+    collectionId: "0",
 	hp: 155,
 	str: 65,
 	dr: 30,
@@ -201,7 +201,7 @@ const KenjiDCard = {
 	cardId: "P21RA2KE",
 	uniqueId: "05",
 	name: "Kenji",
-    collectionId: "",
+    collectionId: "0",
 	hp: 195,
 	str: 30,
 	dr: 75,
@@ -218,7 +218,7 @@ const AllyssaDCard = {
 	cardId: "P22HA3AL",
 	uniqueId: "06",
 	name: "Allyssa",
-    collectionId: "",
+    collectionId: "0",
 	hp: 150,
 	str: 55,
 	dr: 45,
@@ -235,7 +235,7 @@ const LucasDCard = {
 	cardId: "P23RA2LU",
 	uniqueId: "07",
 	name: "Lucas",
-    collectionId: "",
+    collectionId: "0",
 	hp: 205,
 	str: 83,
 	dr: 60,
@@ -252,7 +252,7 @@ const NicoleDCard = {
 	cardId: "P24BA2NI",
 	uniqueId: "08",
 	name: "Nicole",
-    collectionId: "",
+    collectionId: "0",
 	hp: 150,
 	str: 55,
 	dr: 25,
@@ -269,7 +269,7 @@ const NivritiDCard = {
 	cardId: "P31BH3NI",
 	uniqueId: "09",
 	name: "Nivriti",
-    collectionId: "",
+    collectionId: "0",
 	hp: 150,
 	str: 50,
 	dr: 35,
@@ -286,7 +286,7 @@ const AnnaDCard = {
 	cardId: "P32AA3AN",
 	uniqueId: "10",
 	name: "Anna",
-    collectionId: "",
+    collectionId: "0",
 	hp: 150,
 	str: 50,
 	dr: 25,
@@ -303,7 +303,7 @@ const JoeDCard = {
 	cardId: "P34HA4JO",
 	uniqueId: "10",
 	name: "Joe",
-    collectionId: "",
+    collectionId: "0",
 	hp: 150,
 	str: 50,
 	dr: 60,
@@ -313,14 +313,14 @@ const JoeDCard = {
 	powerup3: "",
 	ability1: "DSDR+030,1-07///", //Self DR +50 1 round, -6EP
 	ability2: "DSTR+040,1-06N//", //130 damage 1 round, -1EP
-	ability3: "AATK-190,1-09///", //damage 220 1 round, -10EP
+	ability3: "AATK-190,1-11///", //damage 220 1 round, -10EP
 	ability4: "AATK-300,1-17///", //damage 300 1 round, -17EP
 };
 const ZinnieDCard = { 
 	cardId: "P33HS3ZI",
 	uniqueId: "11",
 	name: "Zinnie",
-    collectionId: "",
+    collectionId: "0",
 	hp: 140,
 	str: 50,
 	dr: 30,
@@ -331,6 +331,23 @@ const ZinnieDCard = {
 	ability1: "SATR+050,1-09N//", //All STR +50 1 round next, -9EP
 	ability2: "SHEL+010,3-04///", //Heal 10HP each round for 3 rounds all cards including self, -4EP
 	ability3: "SHEL+060,1-07///", //Heal 60HP 1 round all cards including self, -7EP
+	ability4: ""
+};
+const ArvinDCard = { 
+	cardId: "P41RA3AR",
+	uniqueId: "12",
+	name: "Arvin",
+    collectionId: "0",
+	hp: 160,
+	str: 78,
+	dr: 40,
+	powerupsApplied: 0,
+	powerup1: "",
+	powerup2: "",
+	powerup3: "",
+	ability1: "AATK-120,1-08///", //damage 120 1 round, -8EP
+	ability2: "AATK-140,1-10///", //damage 140 1 round, -10EP
+	ability3: "AATK-170,1-18///", //damage 170 1 round, -18EP
 	ability4: ""
 };
 // ------------------------ 
@@ -415,15 +432,15 @@ let defendPowerupsLib = [
     {name: "20% Damage Resistence", id: "DC-TPDR%020MAX100,11"},
     {name: "25% Damage Resistence", id: "DC-TPDR%025MAX100,16"},
     // Rare
-    {name: "10% Damage Resistence [FREE]", id: "DC-TPDR%010MAX100,0"},
-    {name: "25% Damage Resistence [FREE]", id: "DC-TPDR%025MAX100,0"},
-    {name: "35% Damage Resistence", id: "DC-TPDR%035MAX100,19"},
+    {name: "10% Damage Resistence [FREE]", id: "DR-TPDR%010MAX100,0"},
+    {name: "25% Damage Resistence [FREE]", id: "DR-TPDR%025MAX100,0"},
+    {name: "35% Damage Resistence", id: "DR-TPDR%035MAX100,19"},
     // Epic 
-    {name: "35% Damage Resistence [FREE]", id: "DC-TPDR%010MAX100,0"},
-    {name: "50% Damage Resistence", id: "DC-TPDR%050MAX100,25"},
-    {name: "100% Damage Resistence", id: "DC-TPDR%100MAX100,52"},
+    {name: "35% Damage Resistence [FREE]", id: "DE-TPDR%010MAX100,0"},
+    {name: "50% Damage Resistence", id: "DE-TPDR%050MAX100,25"},
+    {name: "100% Damage Resistence", id: "DE-TPDR%100MAX100,52"},
     // Legendary
-    {name: "100% Damage Resistence [FREE]", id: "DC-TPDR%100MAX100,0"},
+    {name: "100% Damage Resistence [FREE]", id: "DL-TPDR%100MAX100,0"},
 ];
 
 // --- Draw a Char Card ---
@@ -456,32 +473,33 @@ function drawPackFunc(packNumber) {
     console.log(`Successfully drew: ${randomCard.name} from Pack${packNumber}. Tries: ${drawTries}`);
     playerProfile.allCharCards.push({...randomCard});
     playerProfile.characterCards++
-    playerProfile.allCharCards[playerProfile.allCharCards.length-1].collectionId = toString(playerProfile.characterCards);
+    playerProfile.allCharCards[playerProfile.allCharCards.length - 1].collectionId = String(playerProfile.characterCards);
 }
 
 // --- Draw a Powerup ---
 function drawPowerupFunc() {
 	console.log("drawPowerupFunc called")
-  const rarityChance = Math.random();
-  let rarity = "Null";
-  if (rarityChance < 0.01) {
-    console.log("Rarity: Legendary"); // 1% chance
-    rarity = "L";
-  } else if (rarityChance  < 0.05) {
-    console.log("Result: Epic"); // 4% chance
-    rarity = "E";
-  } else if (rarityChance < 0.40) {
-    console.log ("Result: Rare"); // 35% chance
-    rarity = "R";
-  } else {
-    console.log("Result: Common"); // 60% chance
-    rarity = "C";
-  }
-  const allPowerups = [...cardPowerupsLib,...playerPowerupsLib,...defendPowerupsLib];
-  let eligiblePowerups = allPowerups.filter(item => item.id[1] === targetRarityInitial);
-  const randomPowerupIndex = Math.floor(Math.random() * eligiblePowerups.length);
-  const drawnPowerup = eligiblePowerups[randomPowerupIndex]
-  playerProfile.allPowerups.push(drawnPowerup);
+    const rarityChance = Math.random();
+    let rarity = "Null";
+    if (rarityChance < 0.04) {
+        console.log("Rarity: Legendary"); // 4% chance
+        rarity = "L";
+    } else if (rarityChance  < 0.14) {
+        console.log("Rarity: Epic"); // 10% chance
+        rarity = "E";
+    } else if (rarityChance < 0.44) {
+        console.log ("Rarity: Rare"); // 30% chance
+        rarity = "R";
+    } else {
+        console.log("Rarity: Common"); // 56% chance
+        rarity = "C";
+    }
+    const allPowerups = [...cardPowerupsLib,...playerPowerupsLib,...defendPowerupsLib];
+    let eligiblePowerups = allPowerups.filter(item => item.id[1] === rarity);
+    const randomPowerupIndex = Math.floor(Math.random() * eligiblePowerups.length);
+    const drawnPowerup = eligiblePowerups[randomPowerupIndex]
+    playerProfile.allPowerups.push(drawnPowerup);
+    console.log(`Drawn ${drawnPowerup.name} with id: ${drawnPowerup.id}`);
 }
 
 // --- View cards ---
