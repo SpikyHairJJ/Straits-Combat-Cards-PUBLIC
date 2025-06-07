@@ -56,6 +56,7 @@ let playerProfile = {
     TotalEnergy: 50,   // Their overall TLEP starting point for any game
     Luckiness: 80,     // Their overall TLCK starting point for any game
     TotalHealthRegen: 5, // Their overall TLHR in HP/Turn starting point for any game
+    // --- Poewrups Applied ---
     powerupsApplied: [
 
     ],
@@ -67,7 +68,7 @@ let playerProfile = {
 
     ],
 
-    // --- Powerup Inventory (All powerups they OWN) ---
+    // --- Powerup Inventory (All powerups they have not applied) ---
     // These are the raw powerup items they've acquired.
     // They would then "apply" some to their cards, or choose defend powerups for a game.
     allPowerups: [ // Unapplied powerups
@@ -368,6 +369,23 @@ const WenJayDCard = {
 	ability3: "DDTR+050,1-06D13N", //Arvin and Self STR +50, 1 round NEDXT ROUND.
 	ability4: ""
 };
+const JiHyoDCard = { 
+	cardId: "P43",
+	uniqueId: "14",
+	name: "Ji Hyo",
+    collectionId: "0",
+	hp: 155,
+	str: 70,
+	dr: 35,
+	powerupsApplied: 0,
+	powerup1: "",
+	powerup2: "",
+	powerup3: "",
+	ability1: "", //damage 180 1 round, -19EP (It takes a lot of energy to raise a frog)
+	ability2: "", //damage 80 1 round, -4EP
+	ability3: "", //Arvin and Self STR +50, 1 round NEDXT ROUND.
+	ability4: ""
+};
 // ------------------------ 
 
 // --- Powerups Array ---
@@ -626,19 +644,120 @@ fileInput.addEventListener('change', (event) => {
         // This function will run when the file has been successfully read
         reader.onload = function(e) {
             const fileContent = e.target.result; // Get the content of the file as a string
+
             console.log("--- File Content Loaded ---");
-            console.log(fileContent); // Display the full file content in the console
-            const lines = fileContent.split('\n').map(line => line.trim()); // lines is array containing each line as an item
-            console.log("\n--- Processed Lines ---");
-            lines.forEach((line, index) => { // for each line
-                console.log(`Line ${index + 1}: "${line}"`);
+            console.log(`Encoded: ${fileContent}`); // Display the full file content in the console
+            const sections = fileContent.split('sub').map(item => item.trim()); // lines is array containing each line as an item
+            console.log("\n--- Processed Sections ---");
+
+            sections.forEach((section, index) => { // for each line
+                console.log(`\nEncoded Line ${index + 1}: "${section}"`);
+
                 if (index===0) {
-					playerProfile.allCharCards = line.split(',').map(line => line.trim());
-					console.log(playerProfile.allCharCards);
+                    console.log("Player Profile Importing");
+					const importedJSONPlayerProfile = decodeBase64(section); // Decode the player profile
+                    const importedPlayerProfile = JSON.parse(importedJSONPlayerProfile); // JSON un-stringify
+
+                    const propsToExclude = [ // Properties to not be included as will be done later
+                        "allCharCards",
+                        "allPowerups",
+                        "cardDeck1",
+                        "cardDeck2",
+                        "cardDeck2",
+                    ];
+
+                    for (const prop in importedPlayerProfile) {
+                        if (playerProfile.hasOwnProperty([prop]) && !propsToExclude.includes(prop)){
+                            playerProfile[prop] = importedPlayerProfile[prop]; // Import data
+                        }
+                    }
+
+                    console.log(`Imported Player Profile: ${playerProfile}`);
 				} else if (index===1) {
-					playerProfile.allPowerups = line.split(',').map(line => line.trim());
-					console.log(playerProfile.allPowerups);
-				}
+                    console.log("Card Importing");
+                    playerProfile.allCharCards = []; // Reset allCharCards to [no items]
+					const encodedImportedJSONCards = section.split('\n').map(item => item.trim()); // Get each card
+                    let consoleDisplayCards = []; 
+
+                    encodedImportedJSONCards.forEach((card) => {
+                        const importedJSONCard = decodeBase64(card);
+                        const importedCard = JSON.parse(importedJSONCard);
+                        playerProfile.allCharCards.push(importedCard); // Add card to allCharCards
+                        consoleDisplayCards.push(importedCard.name); // Add to the console of list of names that will be displayed below
+                    });
+
+                    console.log(`Imported Cards: ${consoleDisplayCards}`);
+				} else if (index=== 2) {
+                    console.log("Powerup Importing");
+                    playerProfile.allPowerups = []; // Reset allPowerups to [no items]
+                    const encodedImportedJSONPowerups = section.split('\n').map(item => item.trim()); // Get each powerup
+                    let consoleDisplayPowerups = [];
+
+                    encodedImportedJSONPowerups.forEach((powerup) => {
+                        const importedJSONPowerup = decodeBase64(powerup);
+                        const importedPowerup = JSON.parse(importedJSONPowerup);
+                        playerProfile.allPowerups.push(importedPowerup); // Add powerup to allPowerups
+                        consoleDisplayPowerups.push(importedPowerup.name);
+                    });
+
+                    console.log(`Imported Powerups: ${consoleDisplayPowerups}`);
+                } else if (index===3) {
+                    console.log("Player Applied Powerup Importing");
+                    playerProfile.powerupsApplied = []; // Reset allPowerups to [no items]
+                    const encodedImportedJSONPowerups = section.split('\n').map(item => item.trim()); // Get each powerup
+                    let consoleDisplayPowerups = [];
+
+                    encodedImportedJSONPowerups.forEach((powerup) => {
+                        const importedJSONPowerup = decodeBase64(powerup);
+                        const importedPowerup = JSON.parse(importedJSONPowerup);
+                        playerProfile.powerupsApplied.push(importedPowerup); // Add powerup to allPowerups
+                        consoleDisplayPowerups.push(importedPowerup.name);
+                    });
+
+                    console.log(`Imported Player Applied Powerups: ${consoleDisplayPowerups}`)
+                } else if (index===4) {
+                    console.log("Deck 1 Importing");
+                    playerProfile.cardDeck1 = []; // Reset allCharCards to [no items]
+					const encodedImportedJSONCards = section.split('\n').map(item => item.trim()); // Get each card in deck
+                    let consoleDisplayCards = []; 
+
+                    encodedImportedJSONCards.forEach((card) => {
+                        const importedJSONCard = decodeBase64(card);
+                        const importedCard = JSON.parse(importedJSONCard);
+                        playerProfile.cardDeck1.push(importedCard); // Add card to allCharCards
+                        consoleDisplayCards.push(importedCard.name); // Add to the console of list of names that will be displayed below
+                    });
+
+                    console.log(`Imported Deck 1 Cards: ${consoleDisplayCards}`)
+                } else if (index===5){
+                    console.log("Deck 2 Importing");
+                    playerProfile.cardDeck2 = []; // Reset allCharCards to [no items]
+					const encodedImportedJSONCards = section.split('\n').map(item => item.trim()); // Get each card in deck
+                    let consoleDisplayCards = []; 
+
+                    encodedImportedJSONCards.forEach((card) => {
+                        const importedJSONCard = decodeBase64(card);
+                        const importedCard = JSON.parse(importedJSONCard);
+                        playerProfile.cardDeck2.push(importedCard); // Add card to allCharCards
+                        consoleDisplayCards.push(importedCard.name); // Add to the console of list of names that will be displayed below
+                    });
+
+                    console.log(`Imported Deck 2 Cards: ${consoleDisplayCards}`)
+                } else if (index == 6) {
+                    console.log("Deck 3 Importing");
+                    playerProfile.cardDeck2 = []; // Reset allCharCards to [no items]
+					const encodedImportedJSONCards = section.split('\n').map(item => item.trim()); // Get each card in deck
+                    let consoleDisplayCards = []; 
+
+                    encodedImportedJSONCards.forEach((card) => {
+                        const importedJSONCard = decodeBase64(card);
+                        const importedCard = JSON.parse(importedJSONCard);
+                        playerProfile.cardDeck2.push(importedCard); // Add card to allCharCards
+                        consoleDisplayCards.push(importedCard.name); // Add to the console of list of names that will be displayed below
+                    });
+
+                    console.log(`Imported Deck 3 Cards: ${consoleDisplayCards}`)
+                }
             });
             
             console.log("\n--- File Processing Complete ---");
@@ -747,7 +866,7 @@ function deleteCardsFunc() {
     viewCardsFunc(); // Show updated cards
 }
 
-// --- Encrypt Base64 ---
+// --- Encode Base64 ---
 function encodeBase64(str) {
     // 1. Encode the string to a Uint8Array (UTF-8 bytes)
     const utf8Bytes = new TextEncoder().encode(str);
@@ -761,31 +880,22 @@ function encodeBase64(str) {
 }
 
 
-// --- Decrypt Ceaser Cipher ---
-function decodeCaesarCipher(cipherText, shift) {
-    let decryptedText = '';
-    const alphabetSize = 26; // Number of letters in the English alphabet
+// --- Decode Base64 ---
+function decodeBase64(str) {
+    try {
+        // 1. Decode the Base64 string to a binary string
+        const binaryString = atob(str);
 
-    for (let i = 0; i < cipherText.length; i++) {
-        const char = cipherText[i];
+        // 2. Convert the binary string to a Uint8Array (UTF-8 bytes)
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
 
-        // Handle uppercase letters
-        if (char >= 'A' && char <= 'Z') {
-            const charCode = char.charCodeAt(0); // Get ASCII value
-            const shiftedCharCode = ((charCode - 'A'.charCodeAt(0) - shift + alphabetSize) % alphabetSize) + 'A'.charCodeAt(0);
-            decryptedText += String.fromCharCode(shiftedCharCode);
-        }
-        // Handle lowercase letters
-        else if (char >= 'a' && char <= 'z') {
-            const charCode = char.charCodeAt(0); // Get ASCII value
-            const shiftedCharCode = ((charCode - 'a'.charCodeAt(0) - shift + alphabetSize) % alphabetSize) + 'a'.charCodeAt(0);
-            decryptedText += String.fromCharCode(shiftedCharCode);
-        }
-        // Keep non-alphabetic characters as they are (spaces, punctuation, numbers)
-        else {
-            decryptedText += char;
-        }
+        // 3. Decode the Uint8Array to a regular JavaScript string using UTF-8
+        return new TextDecoder().decode(bytes);
+    } catch (e) {
+        console.error("Base64 decoding error:", e);
+        return null; // Return null or throw error if decoding fails
     }
-    return decryptedText;
 }
-
