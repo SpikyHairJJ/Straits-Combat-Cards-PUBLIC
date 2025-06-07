@@ -110,6 +110,7 @@ After the comma is how many rounds this lasts or during attack (1 For all atk ab
 After the dash is how many energy points it takes (1,2,3 etc)
 After the energy points is remarks (RSO means RUSA ONLY (the rs means rusa) D(unqiueId) is duo ability, ONE means can be used one time only /// means no remarks)
 After AND there might be another part to the ability and damage points will be at the very end
+If it has an N at the very end it also means next round but the three letter remark is alr filled
 
 The Max is always 210 for HP UNLESS IT IS +Percantage HP and 100 for STR and 90 for DR
 */
@@ -348,6 +349,23 @@ const ArvinDCard = {
 	ability1: "AATK-120,1-08///", //damage 120 1 round, -8EP
 	ability2: "AATK-140,1-10///", //damage 140 1 round, -10EP
 	ability3: "AATK-170,1-18///", //damage 170 1 round, -18EP
+	ability4: ""
+};
+const WenJayDCard = { 
+	cardId: "P42NA3WE",
+	uniqueId: "13",
+	name: "Wen Jay",
+    collectionId: "0",
+	hp: 135,
+	str: 70,
+	dr: 60,
+	powerupsApplied: 0,
+	powerup1: "",
+	powerup2: "",
+	powerup3: "",
+	ability1: "AATK-180,1-19///", //damage 180 1 round, -19EP (It takes a lot of energy to raise a frog)
+	ability2: "AATK-080,1-04///", //damage 80 1 round, -4EP
+	ability3: "DDTR+050,1-06D13N", //Arvin and Self STR +50, 1 round NEDXT ROUND.
 	ability4: ""
 };
 // ------------------------ 
