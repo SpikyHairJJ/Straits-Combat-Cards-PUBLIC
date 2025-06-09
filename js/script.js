@@ -160,7 +160,7 @@ const XilinDCard = {
 	powerup1: "",
 	powerup2: "",
 	powerup3: "",
-	ability1: "DADR+030,1///N//.AND.SHEL+5,5-08///", //DR +30 for all in-play cards including self for NEXT ROUND and heal +5 each round for 5 rounds, -8EP
+	ability1: "DADR+030,1///N//.AND.SHEL+5,5-08///", //DR +30 for all in-play cards including self and heal +5 each round for 5 rounds, -8EP
 	ability2: "SHEL+020,2-06RSO", //Heal 20HP for each round for 2 rounds including self for RUSA cards only, -6EP
 	ability3: "SAKDx002,1-10N//", //Attack Damage Multiplier for NEXT ROUND x2 for all, -10EP
 	ability4: "SHEP+200,1-15///", //Heal player 200HP, -15EP
@@ -370,7 +370,7 @@ const WenJayDCard = {
 	ability4: ""
 };
 const JiHyoDCard = { 
-	cardId: "P43",
+	cardId: "P43HA3JI",
 	uniqueId: "14",
 	name: "Ji Hyo",
     collectionId: "0",
@@ -381,9 +381,9 @@ const JiHyoDCard = {
 	powerup1: "",
 	powerup2: "",
 	powerup3: "",
-	ability1: "", //damage 180 1 round, -19EP (It takes a lot of energy to raise a frog)
-	ability2: "", //damage 80 1 round, -4EP
-	ability3: "", //Arvin and Self STR +50, 1 round NEDXT ROUND.
+	ability1: "AATK-090,1-04///", //damage 90 1 round, -4EP
+	ability2: "DSTR+040,1-03N//", //Self STR +40, 1 round next round, -3EP
+	ability3: "AATK-010,5-02///", //damage 30 each for 5 rounds, -2EP
 	ability4: ""
 };
 // ------------------------ 
