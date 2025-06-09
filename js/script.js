@@ -374,6 +374,8 @@ const JiHyoDCard = {
 	uniqueId: "14",
 	name: "Ji Hyo",
     collectionId: "0",
+    xp: 0,
+    level: 1,
 	hp: 155,
 	str: 70,
 	dr: 35,
