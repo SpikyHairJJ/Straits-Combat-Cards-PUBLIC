@@ -188,7 +188,7 @@ const EricaDCard = {
 	ability3: "DSHP+030,1-03///", //HP increased for self by 30 1 round, -3EP
 	ability4: "",
 };
-const KaiYueDCard = { //TBD!!
+const KaiYueDCard = {
 	cardId: "P14BA3KA",
 	uniqueId: "04",
 	name: "Kai Yue",
