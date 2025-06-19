@@ -7,7 +7,8 @@ let drawPowerup = document.getElementById("drawPowerup");
 let viewCards = document.getElementById("viewCards");
 let saveCards = document.getElementById("saveCards");
 let deleteCards = document.getElementById("deleteCards");
-let importDeck = document.getElementById("importData");
+let importBackupData = document.getElementById("importBackupData");
+let importData = document.getElementById("importData")
 let fileInput = document.getElementById("fileInput");
 let deletedRepeated = document.getElementById("deleteRepeated")
 
@@ -29,11 +30,12 @@ drawPowerup.addEventListener("click", drawPowerupFunc);
 viewCards.addEventListener("click", viewCardsFunc);
 deletedRepeated.addEventListener("click", deduplicateCards);
 deleteCards.addEventListener("click", deleteCardsFunc);
+importData.addEventListener("click", importDataFunc)
 
 saveCards.addEventListener("click", function() {
     downloadPacks("StraitsCards"); 
 });
-importDeck.addEventListener('click', () => {
+importBackupData.addEventListener('click', () => {
     fileInput.click(); // Programmatically click the hidden file input
 });
 
@@ -44,7 +46,10 @@ let lastDrawnCard = null;
 let playerProfile = {
     // --- Basic Player Identity ---
     playerName: "Default Player", // The name they type in or choose
-    lastLogin: null, // Optional: for tracking activity
+    loginTime: new Date, // Optional: for tracking activity
+    lastLogin: null,
+    bannerPath : "media/defaultProfileBanner",
+    picPath: "media/defaultProfilePic",
 
     // --- Core Progression Stats (Persistent) ---
     coins: 1000, // Accumulated currency for upgrades (persists across games)
@@ -93,7 +98,7 @@ let playerProfile = {
     totalHealingDoneAcrossAllGames: 0,
     
 };
-
+console.log(playerProfile.loginTime)
 /* P11NA3FA: CardId Guide
 First 2 digits is Pack Number (P1, P2)
 Third Char is order in pack (1, 2, 3, 4)
@@ -582,89 +587,18 @@ function viewCardsFunc() {
 
 // --- Save Data ---
 function downloadPacks(filename) {
-    const playerProfileCore = {
-        playerName: playerProfile.playerName,
-        lastLogin: playerProfile.lastLogin,
-        coins: playerProfile.coins,
-        xp: playerProfile.xp,
-        level: playerProfile.level,
-        TotalHealth: playerProfile.TotalHealth,
-        TotalEnergy: playerProfile.TotalEnergy,
-        Luckiness: playerProfile.Luckiness,
-        TotalHealthRegen: playerProfile.TotalHealthRegen,
-        characterCards: playerProfile.characterCards, // This count can stay here
-        totalGamesPlayed: playerProfile.totalGamesPlayed,
-        totalGamesWon: playerProfile.totalGamesWon,
-        totalGamesLost: playerProfile.totalGamesLost,
-        totalCardsKilled: playerProfile.totalCardsKilled,
-        mostCardsKilled: playerProfile.mostCardsKilled,
-        totalEnergySpent: playerProfile.totalEnergySpent,
-        mostEnergySpent: playerProfile.mostEnergySpent,
-        quickestWin: playerProfile.quickestWin,
-        totalPowerupsApplied: playerProfile.totalPowerupsApplied,
-        totalDamageDealtAcrossAllGames: playerProfile.totalDamageDealtAcrossAllGames,
-        totalHealingDoneAcrossAllGames: playerProfile.totalHealingDoneAcrossAllGames,
-    };
-
-    // Stringify and Base64 encode the core player profile data
-    const encodedPlayerProfileCore = encodeBase64(JSON.stringify(playerProfileCore));
-
-    const encodedCards = playerProfile.allCharCards.map(function(card) {
-        const cardJsonString = JSON.stringify(card);
-        return encodeBase64(cardJsonString)
-    });
-    const cardsMultilineString = encodedCards.join('\n'); // make a new line for each function
-    
-    const encodedPowerups = playerProfile.allPowerups.map(function(card) {
-        const cardJsonString = JSON.stringify(card);
-        return encodeBase64(cardJsonString)
-    });
-
-    const powerupsMultilineString = encodedPowerups.join('\n');
-
-    const encodedPlayerAppliedPowerups = playerProfile.powerupsApplied.map(function(powerup){
-        const cardJsonString = JSON.stringify(powerup);
-        return encodeBase64(cardJsonString)
-    });
-
-    const playerAppliedPowerupsMultilineString = encodedPlayerAppliedPowerups .join('\n')
-
-    const encodedDeck1 = playerProfile.cardDeck1.map(function(card){
-        const cardJsonString = JSON.stringify(card);
-        return encodeBase64(cardJsonString)
-    });
-    
-    const deck1MultilineString = encodedDeck1.join('\n');
-
-    const encodedDeck2 = playerProfile.cardDeck1.map(function(card){
-        const cardJsonString = JSON.stringify(card);
-        return encodeBase64(cardJsonString)
-    });
-    
-    const deck2MultilineString = encodedDeck2.join('\n');
-
-    const encodedDeck3 = playerProfile.cardDeck1.map(function(card){
-        const cardJsonString = JSON.stringify(card);
-        return encodeBase64(cardJsonString)
-    });
-    
-    const deck3MultilineString = encodedDeck3.join('\n');
-
-    const allContent = `${encodedPlayerProfileCore}\nsub\n${cardsMultilineString}\nsub\n${powerupsMultilineString}\nsub\n${playerAppliedPowerupsMultilineString}\nsub\n${deck1MultilineString}\nsub\n${deck2MultilineString}\nsub\n${deck3MultilineString}`;
-
-    // 7. Create and download the Blob
-    const blob = new Blob([allContent], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename || "my-encrypted-data.txt"; // Changed default filename to reflect encryption
-    a.click();
-    URL.revokeObjectURL(url);
-
-    // Log the original and encrypted data for debugging TBD
+    const JSONProfile = JSON.stringify(playerProfile);
+    localStorage.setItem('Data', decodeBase64(JSONProfile));
+    console.log("Saved Data to localStorage");
 }
 
 // --- Import Data ---
+function importDataFunc() {
+    const raw = localStorage.getItem('Data');
+    playerProfile = JSON.parse(decodeBase64(raw));
+}
+
+// --- Import Backup Data ---
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0]; // Get the first (and only) selected file
 
