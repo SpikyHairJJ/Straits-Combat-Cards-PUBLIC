@@ -136,291 +136,308 @@ After the dash if the code for special ability, each one has a unqiue number cod
 The slashes is to makke it the same length as a Stat Powerip
 After the comma is how much TLEP it deducts
 */
-const FayyadhDCard = {
-	cardId: "P11NA2FA",
-	uniqueId: "01",
-	name: "Fayyadh",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 150,
-	str: 55,
-	dr: 20,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "DSDR+040,1-05///", //DR for this card +40 for 1 round, -5EP
-	ability2: "SADR+050,1-07///", //DR all cards including self +50 for 1 round, -7EP
-	ability3: "",
-	ability4: "",
-};
-const XilinDCard = {
-	cardId: "P12RS4XI",
-	uniqueId: "02",
-	name: "Xilin",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 140,
-	str: 60,
-	dr: 50,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "DADR+030,1///N//.AND.SHEL+5,5-08///", //DR +30 for all in-play cards including self and heal +5 each round for 5 rounds, -8EP
-	ability2: "SHEL+020,2-06RSO", //Heal 20HP for each round for 2 rounds including self for RUSA cards only, -6EP
-	ability3: "SAKDx002,1-10N//", //Attack Damage Multiplier for NEXT ROUND x2 for all, -10EP
-	ability4: "SHEP+200,1-15///", //Heal player 200HP, -15EP
-};
-const EricaDCard = {
-	cardId: "P13NA3ER",
-	uniqueId: "03",
-	name: "Erica",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 160,
-	str: 60,
-	dr: 45,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-080,1-06///", //Attack 80 Damage 1 round, -6EP
-	ability2: "AATK-060,1-04///", //Attack 60 Damage 1 round, -4EP
-	ability3: "DSHP+030,1-03///", //HP increased for self by 30 1 round, -3EP
-	ability4: "",
-};
-const KaiYueDCard = {
-	cardId: "P14BA3KA",
-	uniqueId: "04",
-	name: "Kai Yue",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 155,
-	str: 65,
-	dr: 30,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-110,1-08///", //Attack 110 Damage 1 round, -8EP
-	ability2: "AATK-140,1-09", //Attack 140 Damage1 roud, -9EP probably likle a mm2 desc
-	ability3: "AATK-90,1-06", //Attack 90 Damage 1 round, -6EP probably like a gag desc
-	ability4: "",
-};
-const KenjiDCard = { 
-	cardId: "P21RA2KE",
-	uniqueId: "05",
-	name: "Kenji",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 195,
-	str: 30,
-	dr: 75,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-120,1-10///", //Attack 120 Damage 1 round, -10EP
-	ability2: "AATK-090,1-07///", //Attack 90 Damage 1 round, -7EP
-	ability3: "", 
-	ability4: "",
-};
-const AllyssaDCard = { 
-	cardId: "P22HA3AL",
-	uniqueId: "06",
-	name: "Allyssa",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 150,
-	str: 55,
-	dr: 45,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "DSTR+040,1-04N//", //+40 Strength for NEXT ROUND
-	ability2: "AATK-080,1-05///", //Attack 80 Damage 1 round, -5EP
-	ability3: "AATK-145,1///D03.AND.SATR+70,1-16N//",  //Duo ability with Erica, 145 Damage 1 round AND +70 STR all cards 1 round, -16EP
-	ability4: "",
-};
-const LucasDCard = { 
-	cardId: "P23RA2LU",
-	uniqueId: "07",
-	name: "Lucas",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 205,
-	str: 83,
-	dr: 60,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-100,1-07///", //100 Damage, -7EP
-	ability2: "AATK-210,1-40ONE", //Attack 210 Damage 1 round, -40EP
-	ability3: "",  
-	ability4: "",
-};
-const NicoleDCard = { 
-	cardId: "P24BA2NI",
-	uniqueId: "08",
-	name: "Nicole",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 150,
-	str: 55,
-	dr: 25,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-065,1-05///", //65 Damage, -5EP
-	ability2: "AATK-040,1-02///", //Attack 40 Damage 1 round, -2EP
-	ability3: "",  
-	ability4: "",
-};
-const NivritiDCard = { 
-	cardId: "P31BH3NI",
-	uniqueId: "09",
-	name: "Nivriti",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 150,
-	str: 50,
-	dr: 35,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "SADR+020,1-06///", //+20 All DR, -6EP
-	ability2: "DSDR+100,1-09///", //make self invincible 1 round, -9EP
-	ability3: "AATK-070,1///D03.AND.SATR+030,1-11N//", //damage -70 1 round and all str +30 1 round for next round, duo ability with erica, -11EP  
-	ability4: "",
-};
-const AnnaDCard = { 
-	cardId: "P32AA3AN",
-	uniqueId: "10",
-	name: "Anna",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 150,
-	str: 50,
-	dr: 25,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-090,1-07", //90 damage, -7EP
-	ability2: "AATK-130,1-01///", //130 damage 1 round, -1EP
-	ability3: "DSTR+040,1-05N//", //add 40 str next round, -5EP
-	ability4: "",
-};
-const JoeDCard = { 
-	cardId: "P34HA4JO",
-	uniqueId: "10",
-	name: "Joe",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 150,
-	str: 50,
-	dr: 60,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "DSDR+030,1-07///", //Self DR +50 1 round, -6EP
-	ability2: "DSTR+040,1-06N//", //130 damage 1 round, -1EP
-	ability3: "AATK-190,1-11///", //damage 220 1 round, -10EP
-	ability4: "AATK-300,1-17///", //damage 300 1 round, -17EP
-};
-const ZinnieDCard = { 
-	cardId: "P33HS3ZI",
-	uniqueId: "11",
-	name: "Zinnie",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 140,
-	str: 50,
-	dr: 30,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "SATR+050,1-09N//", //All STR +50 1 round next, -9EP
-	ability2: "SHEL+010,3-04///", //Heal 10HP each round for 3 rounds all cards including self, -4EP
-	ability3: "SHEL+060,1-07///", //Heal 60HP 1 round all cards including self, -7EP
-	ability4: ""
-};
-const ArvinDCard = { 
-	cardId: "P41RA3AR",
-	uniqueId: "12",
-	name: "Arvin",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 160,
-	str: 78,
-	dr: 40,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-120,1-08///", //damage 120 1 round, -8EP
-	ability2: "AATK-140,1-10///", //damage 140 1 round, -10EP
-	ability3: "AATK-170,1-18///", //damage 170 1 round, -18EP
-	ability4: ""
-};
-const WenJayDCard = { 
-	cardId: "P42NA3WE",
-	uniqueId: "13",
-	name: "Wen Jay",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 135,
-	str: 70,
-	dr: 60,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-180,1-19///", //damage 180 1 round, -19EP (It takes a lot of energy to raise a frog)
-	ability2: "AATK-080,1-04///", //damage 80 1 round, -4EP
-	ability3: "DDTR+050,1-06D13N", //Arvin and Self STR +50, 1 round NEDXT ROUND.
-	ability4: ""
-};
-const JiHyoDCard = { 
-	cardId: "P43HA3JI",
-	uniqueId: "14",
-	name: "Ji Hyo",
-    collectionId: "0",
-    xp: 0,
-    level: 1,
-	hp: 155,
-	str: 70,
-	dr: 35,
-	powerupsApplied: 0,
-	powerup1: "",
-	powerup2: "",
-	powerup3: "",
-	ability1: "AATK-090,1-04///", //damage 90 1 round, -4EP
-	ability2: "DSTR+040,1-03N//", //Self STR +40, 1 round next round, -3EP
-	ability3: "AATK-010,5-02///", //damage 30 each for 5 rounds, -2EP
-	ability4: ""
-};
+const allDCards = [
+    {
+        cardId: "P11NA2FA",
+        uniqueId: "01",
+        name: "Fayyadh",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 150,
+        str: 55,
+        dr: 20,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "DSDR+040,1-05///", //DR for this card +40 for 1 round, -5EP
+        ability2: "SADR+050,1-07///", //DR all cards including self +50 for 1 round, -7EP
+        ability3: "",
+        ability4: "",
+    },
+    {
+        cardId: "P12RS4XI",
+        uniqueId: "02",
+        name: "Xilin",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 140,
+        str: 60,
+        dr: 50,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "DADR+030,1///N//.AND.SHEL+5,5-08///", //DR +30 for all in-play cards including self and heal +5 each round for 5 rounds, -8EP
+        ability2: "SHEL+020,2-06RSO", //Heal 20HP for each round for 2 rounds including self for RUSA cards only, -6EP
+        ability3: "SAKDx002,1-10N//", //Attack Damage Multiplier for NEXT ROUND x2 for all, -10EP
+        ability4: "SHEP+200,1-15///", //Heal player 200HP, -15EP
+    },
+    {
+        cardId: "P13NA3ER",
+        uniqueId: "03",
+        name: "Erica",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 160,
+        str: 60,
+        dr: 45,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-080,1-06///", //Attack 80 Damage 1 round, -6EP
+        ability2: "AATK-060,1-04///", //Attack 60 Damage 1 round, -4EP
+        ability3: "DSHP+030,1-03///", //HP increased for self by 30 1 round, -3EP
+        ability4: "",
+    },
+    {
+        cardId: "P14BA3KA",
+        uniqueId: "04",
+        name: "Kai Yue",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 155,
+        str: 65,
+        dr: 30,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-110,1-08///", //Attack 110 Damage 1 round, -8EP
+        ability2: "AATK-140,1-09", //Attack 140 Damage1 roud, -9EP probably likle a mm2 desc
+        ability3: "AATK-90,1-06", //Attack 90 Damage 1 round, -6EP probably like a gag desc
+        ability4: "",
+    },
+    {
+        cardId: "P21RA2KE",
+        uniqueId: "05",
+        name: "Kenji",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 195,
+        str: 30,
+        dr: 75,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-120,1-10///", //Attack 120 Damage 1 round, -10EP
+        ability2: "AATK-090,1-07///", //Attack 90 Damage 1 round, -7EP
+        ability3: "",
+        ability4: "",
+    },
+    {
+        cardId: "P22HA3AL",
+        uniqueId: "06",
+        name: "Allyssa",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 150,
+        str: 55,
+        dr: 45,
+        picPath: "", // Added picPath, was missing
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "DSTR+040,1-04N//", //+40 Strength for NEXT ROUND
+        ability2: "AATK-080,1-05///", //Attack 80 Damage 1 round, -5EP
+        ability3: "AATK-145,1///D03.AND.SATR+70,1-16N//",  //Duo ability with Erica, 145 Damage 1 round AND +70 STR all cards 1 round, -16EP
+        ability4: "",
+    },
+    {
+        cardId: "P23RA2LU",
+        uniqueId: "07",
+        name: "Lucas",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 205,
+        str: 83,
+        dr: 60,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-100,1-07///", //100 Damage, -7EP
+        ability2: "AATK-210,1-40ONE", //Attack 210 Damage 1 round, -40EP
+        ability3: "",
+        ability4: "",
+    },
+    {
+        cardId: "P24BA2NI",
+        uniqueId: "08",
+        name: "Nicole",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 150,
+        str: 55,
+        dr: 25,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-065,1-05///", //65 Damage, -5EP
+        ability2: "AATK-040,1-02///", //Attack 40 Damage 1 round, -2EP
+        ability3: "",
+        ability4: "",
+    },
+    {
+        cardId: "P31BH3NI",
+        uniqueId: "09",
+        name: "Nivriti",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 150,
+        str: 50,
+        dr: 35,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "SADR+020,1-06///", //+20 All DR, -6EP
+        ability2: "DSDR+100,1-09///", //make self invincible 1 round, -9EP
+        ability3: "AATK-070,1///D03.AND.SATR+030,1-11N//", //damage -70 1 round and all str +30 1 round for next round, duo ability with erica, -11EP
+        ability4: "",
+    },
+    {
+        cardId: "P32AA3AN",
+        uniqueId: "10",
+        name: "Anna",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 150,
+        str: 50,
+        dr: 25,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-090,1-07", //90 damage, -7EP
+        ability2: "AATK-130,1-01///", //130 damage 1 round, -1EP
+        ability3: "DSTR+040,1-05N//", //add 40 str next round, -5EP
+        ability4: "",
+    },
+    {
+        cardId: "P34HA4JO",
+        uniqueId: "10", // Note: This uniqueId is duplicated with Anna (08)
+        name: "Joe",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 150,
+        str: 50,
+        dr: 60,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "DSDR+030,1-07///", //Self DR +50 1 round, -6EP (comment says 50, code says 30)
+        ability2: "DSTR+040,1-06N//", //130 damage 1 round, -1EP (comment is for ability2, not this ability)
+        ability3: "AATK-190,1-11///", //damage 220 1 round, -10EP (comment says 220, code says 190)
+        ability4: "AATK-300,1-17///", //damage 300 1 round, -17EP
+    },
+    {
+        cardId: "P33HS3ZI",
+        uniqueId: "11",
+        name: "Zinnie",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 140,
+        str: 50,
+        dr: 30,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "SATR+050,1-09N//", //All STR +50 1 round next, -9EP
+        ability2: "SHEL+010,3-04///", //Heal 10HP each round for 3 rounds all cards including self, -4EP
+        ability3: "SHEL+060,1-07///", //Heal 60HP 1 round all cards including self, -7EP
+        ability4: ""
+    },
+    {
+        cardId: "P41RA3AR",
+        uniqueId: "12",
+        name: "Arvin",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 160,
+        str: 78,
+        dr: 40,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-120,1-08///", //damage 120 1 round, -8EP
+        ability2: "AATK-140,1-10///", //damage 140 1 round, -10EP
+        ability3: "AATK-170,1-18///", //damage 170 1 round, -18EP
+        ability4: ""
+    },
+    {
+        cardId: "P42NA3WE",
+        uniqueId: "13",
+        name: "Wen Jay",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 135,
+        str: 70,
+        dr: 60,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-180,1-19///", //damage 180 1 round, -19EP (It takes a lot of energy to raise a frog)
+        ability2: "AATK-080,1-04///", //damage 80 1 round, -4EP
+        ability3: "DDTR+050,1-06D13N", //Arvin and Self STR +50, 1 round NEDXT ROUND.
+        ability4: ""
+    },
+    {
+        cardId: "P43HA3JI",
+        uniqueId: "14",
+        name: "Ji Hyo",
+        collectionId: "0",
+        xp: 0,
+        level: 1,
+        hp: 155,
+        str: 70,
+        dr: 35,
+        picPath: "",
+        powerupsApplied: 0,
+        powerup1: "",
+        powerup2: "",
+        powerup3: "",
+        ability1: "AATK-090,1-04///", //damage 90 1 round, -4EP
+        ability2: "DSTR+040,1-03N//", //Self STR +40, 1 round next round, -3EP
+        ability3: "AATK-010,5-02///", //damage 30 each for 5 rounds, -2EP
+        ability4: ""
+    }
+];
 // ------------------------ 
 
 // --- Powerups Array ---
@@ -518,13 +535,13 @@ let defendPowerupsLib = [
 function drawPackFunc(packNumber) {
     console.log(`drawPackFunc called with Pack${packNumber}`);
 	if (packNumber == 1) {
-        cardsInPack = [FayyadhDCard, XilinDCard, EricaDCard, KaiYueDCard];
+        cardsInPack = [0,1,2,3];
     } else if (packNumber == 2) {
-        cardsInPack = [KenjiDCard, AllyssaDCard, LucasDCard, NicoleDCard];
+        cardsInPack = [4,5,6,7];
     } else if (packNumber == 3) {
-        cardsInPack = [NivritiDCard, JoeDCard, AnnaDCard, ZinnieDCard];
+        cardsInPack = [8,9,10,11];
     } else if (packNumber == 4) {
-		cardsInPack = [ArvinDCard, WenJayDCard, JiHyoDCard, OliviaDCard];
+		cardsInPack = [12,13,14,15];
     }
 	
     let randomCard; // Declare randomCard outside the loop
@@ -533,9 +550,10 @@ function drawPackFunc(packNumber) {
     // and keep drawing if the card is the same as the last one
     do {
         const cardsInPacksRandomIndex = Math.floor(Math.random() * cardsInPack.length);
-        randomCard = cardsInPack[cardsInPacksRandomIndex];
+        randomCardIndex = cardsInPack[cardsInPacksRandomIndex];
+        randomCard = allDCards[randomCardIndex];
 		drawTries++
-        console.log(`Attempted to draw: ${randomCard.name} from Pack${packNumber}. Last drawn: ${lastDrawnCard ? lastDrawnCard.name : 'None'}}`); // For debugging
+        console.log(`Attempted to draw: ${randomCardIndex.name} from Pack${packNumber}. Last drawn: ${lastDrawnCard ? lastDrawnCard.name : 'None'}}`); // For debugging
     } while (randomCard === lastDrawnCard); // Repeat if the new card is the same as the last
 
     // Once a different card is chosen, update the global variable
