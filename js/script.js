@@ -534,7 +534,7 @@ function drawCardFunc() {
     // Once a different card is chosen, update the global variable
     lastDrawnCard = randomCard;
 
-    console.log(`Successfully drew: ${randomCard.name} from Pack${packNumber}. Tries: ${drawTries}`);
+    console.log(`Successfully drew: ${randomCard.name}. Tries: ${drawTries}`);
     playerProfile.allCharCards.push({...randomCard});
     playerProfile.characterCards++
     playerProfile.allCharCards[playerProfile.allCharCards.length - 1].collectionId = String(playerProfile.characterCards);
