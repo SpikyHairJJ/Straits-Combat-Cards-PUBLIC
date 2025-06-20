@@ -1,8 +1,5 @@
 // --- HTML Vars Declaration ---
-let drawPack1 = document.getElementById("drawPack1");
-let drawPack2 = document.getElementById("drawPack2");
-let drawPack3 = document.getElementById("drawPack3");
-let drawPack4 = document.getElementById("drawPack4");
+let drawCard = document.getElementById("drawCard");
 let drawPowerup = document.getElementById("drawPowerup");
 let viewCards = document.getElementById("viewCards");
 let saveCards = document.getElementById("saveCards");
@@ -13,19 +10,7 @@ let fileInput = document.getElementById("fileInput");
 let deletedRepeated = document.getElementById("deleteRepeated")
 
 // --- Event Listensers ---
-drawPack1.addEventListener("click", function() {
-    drawPackFunc(1); // Now this function is called only when the click event happens
-});
-drawPack2.addEventListener("click", function() {
-    drawPackFunc(2);
-});
-drawPack3.addEventListener("click", function() {
-    drawPackFunc(3); 
-});
-drawPack4.addEventListener("click", function() {
-    drawPackFunc(4);
-});
-
+drawCard.addEventListener("click", drawCardFunc);
 drawPowerup.addEventListener("click", drawPowerupFunc);
 viewCards.addEventListener("click", viewCardsFunc);
 deletedRepeated.addEventListener("click", deduplicateCards);
@@ -532,28 +517,18 @@ let defendPowerupsLib = [
 ];
 
 // --- Draw a Char Card ---
-function drawPackFunc(packNumber) {
-    console.log(`drawPackFunc called with Pack${packNumber}`);
-	if (packNumber == 1) {
-        cardsInPack = [0,1,2,3];
-    } else if (packNumber == 2) {
-        cardsInPack = [4,5,6,7];
-    } else if (packNumber == 3) {
-        cardsInPack = [8,9,10,11];
-    } else if (packNumber == 4) {
-		cardsInPack = [12,13,14,15];
-    }
+function drawCardFunc() {
+    console.log(`drawCardFunc Called`);
 	
     let randomCard; // Declare randomCard outside the loop
 	let drawTries = 0;
     // Use a do-while loop to ensure we draw at least once
     // and keep drawing if the card is the same as the last one
     do {
-        const cardsInPacksRandomIndex = Math.floor(Math.random() * cardsInPack.length);
-        randomCardIndex = cardsInPack[cardsInPacksRandomIndex];
-        randomCard = allDCards[randomCardIndex];
+        const cardsRandomIndex = Math.floor(Math.random() * allDCards.length);
+        randomCard = allDCards[cardsRandomIndexIndex];
 		drawTries++
-        console.log(`Attempted to draw: ${randomCardIndex.name} from Pack${packNumber}. Last drawn: ${lastDrawnCard ? lastDrawnCard.name : 'None'}}`); // For debugging
+        console.log(`Attempted to draw: ${randomCardIndex.name}. Last drawn: ${lastDrawnCard ? lastDrawnCard.name : 'None'}}`); // For debugging
     } while (randomCard === lastDrawnCard); // Repeat if the new card is the same as the last
 
     // Once a different card is chosen, update the global variable
