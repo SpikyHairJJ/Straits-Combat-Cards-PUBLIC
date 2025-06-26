@@ -1,3 +1,12 @@
+@keyframes bodyAnimation {
+    0% {
+        background-position: 0% 100%; /* Start at top-right */
+    }
+    100% {
+        background-position: 100% 0%; /* Move to bottom-left */
+    }
+}
+
 #versionNum {
   color: #4DF14F;
   position: absolute;
@@ -17,6 +26,8 @@ body {
   background-color: #292929;
   flex-direction: column;
   position: relative; /* IMPORTANT: This makes #versionNum position relative to the body, not the viewport */
+  background-position: 0% 100%;
+  animation: bodyAnimation 30s linear infinite alternate;
 }
 
 #titleAndDisclaimer {
