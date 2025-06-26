@@ -3,15 +3,10 @@
   position: absolute; /* Takes #versionNum out of the normal document flow */
   bottom: 0;          /* Positions it 0px from the bottom of its *positioned* parent */
   left: 0;            /* Positions it 0px from the left of its *positioned* parent */
-  padding: 10px;      /* Add some padding for visual spacing from the very corner */
+  padding: 0;      /* Add some padding for visual spacing from the very corner */
+  margin: 10px;
 }
 
 body {
-  display: flex;
-  justify-content: center; /* Now this will effectively center your *other* elements vertically */
-  align-items: center;   /* And this will center your *other* elements horizontally */
-  height: 100vh;
-  background-color: #292929;
-  flex-direction: column;
-  position: relative; /* IMPORTANT: This makes #versionNum position relative to the body, not the viewport */
+  background-image: url('/static/media/homeWallpaper.png')
 }
