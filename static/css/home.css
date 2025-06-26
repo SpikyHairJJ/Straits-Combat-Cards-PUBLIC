@@ -1,12 +1,83 @@
+@keyframes bodyAnimation {
+    0% {
+        background-position: 0% 100%; /* Start at top-right */
+    }
+    100% {
+        background-position: 100% 0%; /* Move to bottom-left */
+    }
+}
+
 #versionNum {
-  color: whitesmoke;
-  position: absolute; /* Takes #versionNum out of the normal document flow */
-  bottom: 0;          /* Positions it 0px from the bottom of its *positioned* parent */
-  left: 0;            /* Positions it 0px from the left of its *positioned* parent */
-  padding: 0;      /* Add some padding for visual spacing from the very corner */
-  margin: 10px;
+  color: #4DF14F;
+  position: absolute;
+  bottom: 0;          
+  left: 0;            
+  padding: 4px;      
+  margin: 8px;
+  background-color: #EAFFE8;
+  border-radius: 4px;
 }
 
 body {
   background-image: url('/static/media/homeWallpaper.png')
+  background-position: 0% 100%;
+  animation: bodyAnimation 30s linear infinite alternate;
+}
+
+#titleAndDisclaimer {
+  position: absolute;
+  top: 33vh
+}
+
+#title {
+  font: sans-serif;
+  color: #4DF14F;
+  text-shadow:
+    /* First shadow: The "stroke" effect (all around, 16px weight) */
+    -16px -16px 0 #EAFFE8,
+     16px -16px 0 #EAFFE8,
+    -16px  16px 0 #EAFFE8,
+     16px  16px 0 #EAFFE8,
+    -16px   0px 0 #EAFFE8,
+     16px   0px 0 #EAFFE8,
+     0px  -16px 0 #EAFFE8,
+     0px   16px 0 #EAFFE8,
+    /* (Optional: Add more points for a smoother 16px stroke if needed) */
+
+    /* Second shadow: The "drop shadow" effect (offset bottom and right) */
+    8px 6px 0 #E0E0E0; /* Adjust offset, blur, and color/opacity */
+  font-size: 6em;
+  text-align: center;
+}
+
+#disclaimer {
+  color: #EAFFE8;
+  font: sans-serif;
+  text-align: center;
+  font-size: 1.875em;
+  margin-top: 10px;
+}
+
+#buttons {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  bottom: 33vh;
+}
+
+#playButton {
+  margin-left: 2.36vw;
+  color: #EAFFE8;
+  background-color: #4DF14F;
+  border-radius: 8px;
+  border-color: #42C344;
+  box-shadow: 6px 6px 0 #42C344;
+}
+
+#importButton {
+  color: #EAFFE8;
+  background-color: #4DF14F;
+  border-radius: 8px;
+  border-color: #42C344;
+  box-shadow: 6px 6px 0 #42C344;
 }
