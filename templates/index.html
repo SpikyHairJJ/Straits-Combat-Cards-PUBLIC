@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Straits Combat Cards</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
@@ -16,27 +17,24 @@
 
   </head>
   <body>
-    <div id="content">
-	    <p id="versionNum">Straits Combat Cards v0.1.2.10</p>
-      <div id="titleAndDisclaimer">
-        <img src="{{ url_for('static', filename='media/homeTitle.png')}}" id="title">
-        <p id="disclaimer">The actual menu is very... black</p>
-      </div>
-      <div id="buttons">
-        <button id="playButton">Play</button>
-        <button id="importButton">Import</button>
-      </div>
-      <p id="toggleBodyAni">Disable Background Animation</p>
-      <!-- From Uiverse.io by terenceodonoghue --> 
-      <div class="container">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+	  <p id="versionNum">Straits Combat Cards v0.1.2.10</p>
+    <div id="titleAndDisclaimer">
+      <img src="{{ url_for('static', filename='media/homeTitle.png')}}" id="title">
+      <p id="disclaimer">The actual menu is very... black</p>
+    </div>
+    <div id="buttons">
+      <button id="playButton">Play</button>
+      <button id="importButton">Import</button>
+    </div>
+    <p id="toggleBodyAni">Disable Background Animation</p>
+    <!-- From Uiverse.io by terenceodonoghue --> 
+    <div class="container">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
-
   </body>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 

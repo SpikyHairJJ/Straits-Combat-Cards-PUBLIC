@@ -57,6 +57,11 @@ body.no-animation {
   background-color: #FFFFFF;
   border-radius: 4px;
   font-size: 1em;
+  transition: opacity 1s ease-in-out;
+}
+
+#versionNum.fadeOut {
+  opacity: 0;
 }
 
 body {
@@ -68,19 +73,31 @@ body {
   align-items: center; /* Centers children horizontally */
   min-height: 100vh; /* Ensures the body takes up the full height of the browser window */
   margin: 0; /* Removes default margin around the body */
+  background-color: #a1fe6f;
+  transition: background-image 1s ease-in-out, /* Animate image changes over 2 seconds */
+    background-color 1s ease-in-out; /* Animate color changes over 2 seconds */
+}
+
+body.solid-background {
+  background-image: none;    /* Remove the image */
+  background-color: #212121; /* The new solid color (e.g., a light blue) */
 }
 
 #titleAndDisclaimer {
   position: absolute;
   top: 20vh;
   text-align: center;
+  transition: opacity 1s ease-in-out;
+}
+
+#titleAndDisclaimer.fadeOut {
+  opacity: 0;
 }
 
 #title {
   display: block; /* Important: Make the image a block element */
   margin-left: auto; /* Centers the block element horizontally */
   margin-right: auto; /* Centers the block element horizontally */
-
   max-width: 55%; /* Allows the image to scale down on smaller screens */
   height: auto;   /* Maintains the image's aspect ratio */
 }
@@ -98,6 +115,11 @@ body {
   position: absolute;
   flex-direction: row;
   bottom: 25vh;
+  transition: opacity 1s ease-in-out;
+}
+
+#buttons.fadeOut {
+  opacity: 0;
 }
 
 #playButton {
@@ -140,7 +162,12 @@ body {
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none;    /* Firefox */
   -ms-user-select: none;     /* Internet Explorer/Edge */
-  user-select: none; 
+  user-select: none;
+  transition: opacity 1s ease-in-out; 
+}
+
+#toggleBodyAni.fadeOut {
+  opacity: 0;
 }
 
 #playButton:hover {
@@ -182,6 +209,7 @@ body {
   transform: scale(0.95);
 }
 
+
 /* From Uiverse.io by terenceodonoghue */ 
 .container {
   position: absolute;
@@ -193,6 +221,17 @@ body {
   animation: rotate_3922 1.2s linear infinite;
   background-color: #9b59b6;
   background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.container.fadeIn {
+  opacity: 1;
+}
+
+.container.fadeOut {
+  opacity: 0;
 }
 
 .container span {

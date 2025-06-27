@@ -1,5 +1,11 @@
 let toggleAniButton = document.getElementById("toggleBodyAni");
+let playButton = document.getElementById("playButton");
 let bodyElement = document.body
+let titleDisc = document.getElementById("titleAndDisclaimer");
+let buttons = document.getElementById("buttons");
+let toggleBody = document.getElementById("toggleBodyAni");
+let versionNum = document.getElementById("versionNum");
+const loadingSpinners = document.querySelectorAll(".container");
 
 toggleAniButton.addEventListener('click', function(){
     bodyElement.classList.toggle('no-animation');
@@ -9,3 +15,49 @@ toggleAniButton.addEventListener('click', function(){
         toggleAniButton.textContent = 'Disable Background Animation';
     }
 });
+
+playButton.addEventListener('click', function(){
+    bodyElement.classList.toggle('solid-background');
+    const timeout = 1000
+
+    // Title and Disc
+    titleDisc.classList.add('fadeOut')
+    setTimeout(()=> {
+        titleDisc.style.display = 'none'
+    }, timeout);
+
+    // Buttons
+    buttons.classList.add('fadeOut')
+    setTimeout(()=> {
+        buttons.style.display = 'none'
+    }, timeout);
+
+    // ToggleBodyAni
+    toggleBody.classList.add('fadeOut')
+    setTimeout(()=> {
+        toggleBody.style.display = 'none'
+    }, timeout);
+
+    // VersionNum
+    versionNum.classList.add('fadeOut')
+    setTimeout(()=> {
+        versionNum.style.display = 'none'
+    }, timeout);
+
+    // Loading
+    const loadingTime = Math.floor(Math.random() * (3400 - 300 + 1)) + 300;
+    loadingSpinners.forEach(spinner=>{
+        spinner.style.display = 'block'
+        setTimeout(() => {
+            spinner.classList.add('fadeIn');
+            setTimeout(()=>{
+                spinner.classList.add('fadeOut');
+                setTimeout(()=>{
+                    spinner.style.display = 'none'
+                },350);
+            },loadingTime);
+        }, 1200);
+    })
+
+
+})
