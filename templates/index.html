@@ -16,14 +16,24 @@
 
   </head>
   <body>
-	  <p id="versionNum">Straits Combat Cards v0.1.2.10</p>
-    <div id="titleAndDisclaimer">
-      <p id="title">Straits Combat<br>Cards</p>
-      <p id="disclaimer">The actual menu is very... black</p>
-    </div>
-    <div id="buttons">
-      <button id="playButton">Play</button>
-      <button id="importButton">Import</button>
+    <div id="content">
+	    <p id="versionNum">Straits Combat Cards v0.1.2.10</p>
+      <div id="titleAndDisclaimer">
+        <img src="{{ url_for('static', filename='media/homeTitle.png')}}" id="title">
+        <p id="disclaimer">The actual menu is very... black</p>
+      </div>
+      <div id="buttons">
+        <button id="playButton">Play</button>
+        <button id="importButton">Import</button>
+      </div>
+      <p id="toggleBodyAni">Disable Background Animation</p>
+      <!-- From Uiverse.io by terenceodonoghue --> 
+      <div class="container">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 

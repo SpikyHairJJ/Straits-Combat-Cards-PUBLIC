@@ -1,3 +1,40 @@
+/* --- Agrandir Regular --- */
+@font-face {
+  font-family: 'Agrandir'; /* This is the name you'll use in your CSS (e.g., in font-family property) */
+  src: url('/static/media/fonts/Agrandir-Regular.woff2') format('woff2'), /* Path to WOFF2 */
+    url('/static/media/fonts/Agrandir-Regular.woff') format('woff');   /* Path to WOFF */
+  font-weight: normal; /* This tells the browser this source is for the 'normal' weight */
+  font-style: normal;  /* This tells the browser this source is for the 'normal' style */
+  font-display: swap;  /* Optional: Controls how font loads (swap is good for performance) */
+}
+/* --- Agrandir Bold --- */
+@font-face {
+  font-family: 'Agrandir'; /* Use the SAME font-family name for all variations of the same font */
+  src: url('/static/media/fonts/Agrandir-Bold.woff2') format('woff2'),
+    url('/static/media/fonts/Agrandir-Bold.woff') format('woff');
+  font-weight: bold; /* This tells the browser this source is for the 'bold' weight (or 700) */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Archive';
+  src: url('/static.media/fonts/Archive-Regular.woff2') format('woff2'),
+    url('/static.media/fonts/Archive-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Coiny';
+  src: url('/static.media/fonts/Coiny-Regular.woff2') format('woff2'),
+    url('/static.media/fonts/Coiny-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @keyframes bodyAnimation {
     0% {
         background-position: 0% 100%; /* Start at top-right */
@@ -5,6 +42,9 @@
     100% {
         background-position: 100% 0%; /* Move to bottom-left */
     }
+}
+body.no-animation {
+    animation: none !important; /* !important ensures this style overrides the animation */
 }
 
 #versionNum {
@@ -14,45 +54,40 @@
   left: 0;            
   padding: 4px;      
   margin: 8px;
-  background-color: #EAFFE8;
+  background-color: #FFFFFF;
   border-radius: 4px;
+  font-size: 1em;
 }
 
 body {
-  background-image: url('/static/media/homeWallpaper.png')
+  background-image: url('/static/media/homeWallpaper.png');
   background-position: 0% 100%;
-  animation: bodyAnimation 30s linear infinite alternate;
+  animation: bodyAnimation 100s linear infinite alternate;
+  display: flex;
+  justify-content: center; /* Centers children vertically */
+  align-items: center; /* Centers children horizontally */
+  min-height: 100vh; /* Ensures the body takes up the full height of the browser window */
+  margin: 0; /* Removes default margin around the body */
 }
 
 #titleAndDisclaimer {
   position: absolute;
-  top: 33vh
+  top: 20vh;
+  text-align: center;
 }
 
 #title {
-  font: sans-serif;
-  color: #4DF14F;
-  text-shadow:
-    /* First shadow: The "stroke" effect (all around, 16px weight) */
-    -16px -16px 0 #EAFFE8,
-     16px -16px 0 #EAFFE8,
-    -16px  16px 0 #EAFFE8,
-     16px  16px 0 #EAFFE8,
-    -16px   0px 0 #EAFFE8,
-     16px   0px 0 #EAFFE8,
-     0px  -16px 0 #EAFFE8,
-     0px   16px 0 #EAFFE8,
-    /* (Optional: Add more points for a smoother 16px stroke if needed) */
+  display: block; /* Important: Make the image a block element */
+  margin-left: auto; /* Centers the block element horizontally */
+  margin-right: auto; /* Centers the block element horizontally */
 
-    /* Second shadow: The "drop shadow" effect (offset bottom and right) */
-    8px 6px 0 #E0E0E0; /* Adjust offset, blur, and color/opacity */
-  font-size: 6em;
-  text-align: center;
+  max-width: 55%; /* Allows the image to scale down on smaller screens */
+  height: auto;   /* Maintains the image's aspect ratio */
 }
 
 #disclaimer {
   color: #EAFFE8;
-  font: sans-serif;
+  font-family: 'Agrandir', sans-serif;
   text-align: center;
   font-size: 1.875em;
   margin-top: 10px;
@@ -62,16 +97,21 @@ body {
   display: flex;
   position: absolute;
   flex-direction: row;
-  bottom: 33vh;
+  bottom: 25vh;
 }
 
 #playButton {
-  margin-left: 2.36vw;
+  margin-right: 2.36vw;
   color: #EAFFE8;
   background-color: #4DF14F;
   border-radius: 8px;
   border-color: #42C344;
   box-shadow: 6px 6px 0 #42C344;
+  font-family: 'Archive', sans-serif;
+  width: 10vw;
+  height: 7.4218vh;
+  font-size: 2em;
+  border-width: 3px;
 }
 
 #importButton {
@@ -80,4 +120,124 @@ body {
   border-radius: 8px;
   border-color: #42C344;
   box-shadow: 6px 6px 0 #42C344;
+  font-family: 'Archive', sans-serif;
+  width: 10vw;
+  height: 7.4218vh;
+  font-size: 2em;
+  border-width: 3px;
+}
+
+#toggleBodyAni {
+  color: #4DF14F;
+  position: absolute;
+  bottom: 0;          
+  right: 0;            
+  padding: 4px;      
+  margin: 8px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  font-size: 1em;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none; 
+}
+
+#playButton:hover {
+    transform: translateY(-2px); /* Lifts the button slightly */
+    background-color: #5BF15F; /* Slightly lighter green on hover */
+}
+
+
+#playButton:active {
+    /* Move the button down and right (towards where the shadow is) */
+    transform: translate(8px, 6px);
+
+    /* Reduce or remove the box-shadow to make it look like the button has "entered" it */
+    box-shadow: 0 0 0 transparent; /* Or a very subtle, small shadow like 1px 1px 0 #C0C0C0 */
+
+}
+
+#importButton:hover {
+    transform: translateY(-2px); /* Lifts the button slightly */
+    background-color: #5BF15F; /* Slightly lighter green on hover */
+}
+
+
+#importButton:active {
+    /* Move the button down and right (towards where the shadow is) */
+    transform: translate(8px, 6px);
+
+    /* Reduce or remove the box-shadow to make it look like the button has "entered" it */
+    box-shadow: 0 0 0 transparent; /* Or a very subtle, small shadow like 1px 1px 0 #C0C0C0 */
+
+}
+
+#toggleBodyAni:hover {
+    transform: translateY(-2px); /* Lifts the button slightly */
+}
+
+
+#toggleBodyAni:active {
+  transform: scale(0.95);
+}
+
+/* From Uiverse.io by terenceodonoghue */ 
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  height: 96px;
+  width: 96px;
+  animation: rotate_3922 1.2s linear infinite;
+  background-color: #9b59b6;
+  background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+}
+
+.container span {
+  position: absolute;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: #9b59b6;
+  background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+}
+
+.container span:nth-of-type(1) {
+  filter: blur(5px);
+}
+
+.container span:nth-of-type(2) {
+  filter: blur(10px);
+}
+
+.container span:nth-of-type(3) {
+  filter: blur(25px);
+}
+
+.container span:nth-of-type(4) {
+  filter: blur(50px);
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: #fff;
+  border: solid 5px #ffffff;
+  border-radius: 50%;
+}
+
+@keyframes rotate_3922 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
