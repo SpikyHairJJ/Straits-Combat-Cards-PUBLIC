@@ -5,6 +5,7 @@ let titleDisc = document.getElementById("titleAndDisclaimer");
 let buttons = document.getElementById("buttons");
 let toggleBody = document.getElementById("toggleBodyAni");
 let versionNum = document.getElementById("versionNum");
+let authLink = document.getElementById("authLink")
 const loadingSpinners = document.querySelectorAll(".container");
 
 toggleAniButton.addEventListener('click', function(){
@@ -45,17 +46,13 @@ playButton.addEventListener('click', function(){
     }, timeout);
 
     // Loading
-    const loadingTime = Math.floor(Math.random() * (3400 - 300 + 1)) + 300;
     loadingSpinners.forEach(spinner=>{
         spinner.style.display = 'block'
         setTimeout(() => {
             spinner.classList.add('fadeIn');
-            setTimeout(()=>{
-                spinner.classList.add('fadeOut');
-                setTimeout(()=>{
-                    spinner.style.display = 'none'
-                },350);
-            },loadingTime);
+            setTimeout(() => {
+                authLink.click();
+            }, 400)
         }, 1200);
     })
 

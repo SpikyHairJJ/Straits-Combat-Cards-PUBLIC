@@ -1,0 +1,13 @@
+body {
+    background-color: #212121;
+}
+
+#loginRect {
+    height: 90vh;
+    width: 35vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    left: 5vh;
+    background-color: #22272b;
+    position: absolute;
+}

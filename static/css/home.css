@@ -19,8 +19,8 @@
 
 @font-face {
   font-family: 'Archive';
-  src: url('/static.media/fonts/Archive-Regular.woff2') format('woff2'),
-    url('/static.media/fonts/Archive-Regular.woff') format('woff');
+  src: url('/static/media/fonts/Archive-Regular.woff2') format('woff2'),
+    url('/static/media/fonts/Archive-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -108,6 +108,7 @@ body.solid-background {
   text-align: center;
   font-size: 1.875em;
   margin-top: 10px;
+  display: none;
 }
 
 #buttons {
