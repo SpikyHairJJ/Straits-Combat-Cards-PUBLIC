@@ -22,6 +22,6 @@ window.addEventListener('resize', (event)=>{
         console.log("Changed welcomeH to wrap");
     } else {
         welcomeTextE.classList.add("noWrap");
-        console.log("i am flipping stupid");
+        console.log("Changed welcomeH to no wrap");
     }
 })
