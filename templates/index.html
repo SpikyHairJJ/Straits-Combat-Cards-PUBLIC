@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Straits Combat Cards</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/favicon/favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='media/favicon/favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='media/favicon/favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='media/favicon/apple-touch-icon.png') }}" />
+
+    <meta name="apple-mobile-web-app-title" content="SIS Combat" />
+    <link rel="manifest" href="{{ url_for('static', filename='media/favicon/site.webmanifest') }}" />
+
+  </head>
+  <body>
+	  <p id="versionNum">Straits Combat Cards v0.1.2.10</p>
+    <div id="titleAndDisclaimer">
+      <img src="{{ url_for('static', filename='media/homeTitle.png')}}" id="title">
+      <p id="disclaimer">The actual menu is very... black</p>
+    </div>
+    <div id="buttons">
+      <button id="playButton">Play</button>
+      <button id="importButton">Import</button>
+    </div>
+    <p id="toggleBodyAni">Disable Background Animation</p>
+    <!-- From Uiverse.io by terenceodonoghue --> 
+    <div class="container">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a id="authLink" href="/auth" style="display:none;"></a>
+  </body>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+  </body>
+</html>

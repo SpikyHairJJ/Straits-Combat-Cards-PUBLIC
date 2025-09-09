@@ -1,0 +1,84 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure html and body always occupy full viewport height */
+  overflow: hidden; /* Prevent scrollbars when #loginMain overflows */
+}
+
+body {
+  background-color: #29BD98;
+  position:relative;
+}
+
+#loginMain {
+  background-color: #0B1F30;
+  position: absolute;
+  left: 0vw;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+  top: -15vh;
+  height: 130vh;
+  width: 55vw;
+  border: 1px solid red; /* Remove on main */
+}
+
+#loginWrapper {
+  left: 0vw;
+  height: 100vh;
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+  width: 44.7vw;
+  border: 1px solid red; /* Remove on main */
+}
+
+#welcomeH {
+  top: 2%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Archive', sans-serif;
+  font-size: clamp(40px, 3.5vw, 55px);
+  text-align: center;
+  color: whitesmoke;
+  
+}
+#welcomeH.noWrap {
+  white-space: nowrap;
+}
+
+#uniPassWrapper {
+  position: relative;
+  margin-top: 7vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#uniPass {
+  width: 35%;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  padding-right: 2vw;
+  padding-left: 0.3vw;
+  height: 4.5vh;
+  background-color: #0B1F30;
+  border: 3px solid #214055;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 1.1em;
+}
+#uniPass:focus {
+  outline: none;
+}
+#uniPass::placeholder {
+  color: #214055;
+}
+
+#uniPassHider {
+  background-image: url("/static/media/icons/hidePassword.jpg");
+}
+

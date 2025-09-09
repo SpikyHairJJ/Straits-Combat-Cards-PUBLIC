@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/favicon/favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='media/favicon/favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='media/favicon/favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='media/favicon/apple-touch-icon.png') }}" />
+
+    <meta name="apple-mobile-web-app-title" content="SIS Combat" />
+    <link rel="manifest" href="{{ url_for('static', filename='media/favicon/site.webmanifest') }}" />
+
+  </head>
+  <body>
+
+    <p id="title">STRAITS COMBAT SIMULATOR DLC</p>
+
+    <button id="drawCard">Draw Card</button>
+    <button id="drawPowerup">Draw Powerup</button>
+    <button id="viewCards">View Cards</button>
+    <button id="deleteCards">Delete Card(s)</button>
+    <button id="deleteRepeated">Delete Duplicate Cards</button>
+    <button id="saveCards">Save Data</button>
+    <button id="importBackupData">Import Backup Data</button>
+    <button id="importData">Import Data</button>
+    <input type="file" id="fileInput" accept=".txt" style="display: none;">
+    <p id="versionNum">Straits Combat Simulator Cards v0.1.2.9</p>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Straits Combat Cards</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/favicon/favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='media/favicon/favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='media/favicon/favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='media/favicon/apple-touch-icon.png') }}" />
+
+    <meta name="apple-mobile-web-app-title" content="SIS Combat" />
+    <link rel="manifest" href="{{ url_for('static', filename='media/favicon/site.webmanifest') }}" />
+
+  </head>
+  <body>
+    <div id="loginMain">
+      <div id="loginWrapper">
+        <div style="border-left: 1px dashed red; height: 100vh; width: 1px; position: absolute; left: 50%; transform: translateX(-50%)"></div>
+        <!-- Remove ^^ on main -->
+        <h1 id="welcomeH" class="noWrap">Welcome Back!</h1>
+        <div id="uniPassWrapper">
+          <input id="uniPass" type="password" placeholder="Universal Password">
+          <button id="uniPassHider"></button>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px dashed red; height: 1px; width: 100vw; position: absolute; top: 50%; transform: translateY(-50%)"></div>
+  </body>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+  </body>
+</html>
