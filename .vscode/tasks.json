@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Python App",
+            "type": "shell",
+            "command": "python app.py",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": [],
+                "background": {
+                    "activeOnStart": true
+                }
+            },
+            "group": { // <-- Ensure this 'group' object is here and properly structured
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "instanceLimit": 1
+            }
+        }
+    ]
+}

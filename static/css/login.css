@@ -6,12 +6,12 @@ html, body {
 }
 
 body {
-  background-color: #29BD98;
+  background-color: var(--dark-primary);
   position:relative;
 }
 
 #loginMain {
-  background-color: #0B1F30;
+  background-color: var(--dark-bg);
   position: absolute;
   left: 0vw;
   border-top-left-radius: 0;
@@ -20,7 +20,7 @@ body {
   border-bottom-right-radius: 100%;
   top: -15vh;
   height: 130vh;
-  width: 55vw;
+  width: 47vw;
   border: 1px solid red; /* Remove on main */
 }
 
@@ -30,7 +30,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   position: relative;
-  width: 44.7vw;
+  width: 38.4vw;
   border: 1px solid red; /* Remove on main */
 }
 
@@ -50,35 +50,464 @@ body {
 }
 
 #uniPassWrapper {
-  position: relative;
+  position: relative; 
   margin-top: 7vh;
   left: 50%;
+  width: 40%; 
   transform: translateX(-50%);
 }
 
+.input-field-group {
+  position: relative; /* <--- CRUCIAL: Makes this the positioning context for #uniPassHider */
+  width: 100%; /* <--- Make this group fill the width of #uniPassWrapper */
+  /* Add this if you want its children (input and icon) to be vertically aligned without absolute positioning */
+  display: flex;
+  align-items: center;
+}
+
 #uniPass {
-  width: 35%;
-  left: 50%;
-  position: relative;
-  transform: translateX(-50%);
-  padding-right: 2vw;
+  width: 100%; /* <--- Make the input fill the entire width of its new parent (.input-field-group) */
+  position: static; /* <--- Reset to default flow, let parent handle positioning */
+  left: auto; /* <--- Reset */
+  transform: none; /* <--- Reset */
+  padding-right: 2vw; 
   padding-left: 0.3vw;
-  height: 4.5vh;
-  background-color: #0B1F30;
-  border: 3px solid #214055;
+  height: 4.8vh;
+  background-color: var(--dark-bg);
+  border: 3px solid var(--bg-light);
   border-radius: 10px;
   color: whitesmoke;
   font-family: 'Agrandir', sans-serif;
-  font-size: 1.1em;
+  font-size: 1em;
+  box-sizing: border-box; /* padding/border are included in the 100% width */
 }
 #uniPass:focus {
   outline: none;
 }
 #uniPass::placeholder {
-  color: #214055;
+  color: var(--bg-light);
 }
+
 
 #uniPassHider {
   background-image: url("/static/media/icons/hidePassword.jpg");
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); 
+  width: 2.8vh;
+  height: 2.8vh;
+  cursor: pointer;
+  z-index: 2; /* Ensures it's on top of the input */
 }
 
+
+#username {
+  width: 50%;
+  position: static;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8vh;
+  padding-right: 0.3vw;
+  padding-left: 0.3vw;
+  height: 4.8vh;
+  background-color: var(--dark-bg);
+  border: 3px solid var(--bg-light);
+  border-radius: 10px;
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 1em;
+  box-sizing: border-box; /* padding/border are included in the 100% width */
+}
+#username:focus {
+  outline: none;
+}
+#username::placeholder {
+  color: var(--bg-light);
+}
+
+#passWrapper {
+  position: relative; 
+  margin-top: 4vh;
+  left: 50%;
+  width: 50%; 
+  transform: translateX(-50%);
+}
+
+.input-field-group2 {
+  position: relative; /* <--- CRUCIAL: Makes this the positioning context for #uniPassHider */
+  width: 100%; /* <--- Make this group fill the width of #uniPassWrapper */
+  /* Add this if you want its children (input and icon) to be vertically aligned without absolute positioning */
+  display: flex;
+  align-items: center;
+}
+
+#pass {
+  width: 100%; /* <--- Make the input fill the entire width of its new parent (.input-field-group) */
+  position: static; /* <--- Reset to default flow, let parent handle positioning */
+  left: auto; /* <--- Reset */
+  transform: none; /* <--- Reset */
+  padding-right: 2vw; 
+  padding-left: 0.3vw;
+  height: 4.8vh;
+  background-color: var(--dark-bg);
+  border: 3px solid var(--bg-light);
+  border-radius: 10px;
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 1em;
+  box-sizing: border-box; /* padding/border are included in the 100% width */
+}
+#pass:focus {
+  outline: none;
+}
+#pass::placeholder {
+  color: var(--bg-light);
+}
+
+
+#passHider {
+  background-image: url("/static/media/icons/hidePassword.jpg");
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); 
+  width: 2.8vh;
+  height: 2.8vh;
+  cursor: pointer;
+  z-index: 2; /* Ensures it's on top of the input */
+}
+
+#rememberMeWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+  height: 2vh
+}
+
+#rememberMeCb {
+  display: inline-block;
+  width: 2vh;
+  height: 2vh;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: var(--dark-bg);
+  border: 3px solid var(--bg-light);
+  transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+  position: relative; /* for ::before to be positioned correctly */
+  overflow: hidden;
+}
+#rememberMeCb::before {
+  content: '';
+  position: absolute; 
+  opacity: 0;
+  top: 50%;           
+  left: 50%;
+  transform: translate(-50%, -50%);          
+  width: 80%;      
+  height: 80%;     
+  background-image: url(/static/media/icons/cbtrue.svg);
+  background-size: cover;   
+  background-position: center;
+  background-repeat: no-repeat; 
+  transition: opacity 0.4s ease-in-out
+}
+
+#rememberMeCb.checked::before {
+  opacity: 1;
+}
+
+#rememberMeL {
+  display: inline-block;
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 0.9em;
+  padding-left: 0.5vw;
+}
+
+
+
+#unM {
+  width: 100%; /* <--- Make the input fill the entire width of its new parent (.input-field-group) */
+  position: static; /* <--- Reset to default flow, let parent handle positioning */
+  left: auto; /* <--- Reset */
+  transform: none; /* <--- Reset */
+  padding-right: 2vw; 
+  padding-left: 0.3vw;
+  height: 4.8vh;
+  background-color: var(--dark-bg);
+  border: 3px solid var(--bg-light);
+  border-radius: 10px;
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 1em;
+  box-sizing: border-box; /* padding/border are included in the 100% width */
+}
+
+#usernameMakerWrapper {
+  position: relative; 
+  margin-top: 8vh;
+  left: 50%;
+  width: 50%; 
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: opacity 0.2s ease-in-out
+}
+#unM:focus {
+  outline: none;
+}
+#unM::placeholder {
+  color: var(--bg-light)
+}
+
+
+#maxLWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5vh
+}
+#maxL {
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 0.8em;
+  display: inline-block;
+  padding-left: 0.5vw;
+  transition: color 0.7s ease-in-out;
+  color: var(--red);
+}
+#maxLC {
+  background-image: url(/static/media/icons/cross.png);
+  width: 2vh;
+  height: 2vh;
+  background-size:cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  transition: opacity 0.25s ease-in-out;
+}
+
+#cleanLWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 0.3vh
+}
+#cleanL {
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 0.8em;
+  display: inline-block;
+  padding-left: 0.5vw;
+  transition: color 0.7s ease-in-out;
+  color: var(--classic-green)
+}
+#cleanLC {
+  background-image: url(/static/media/icons/check.png);
+  width: 2vh;
+  height: 2vh;
+  background-size:cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+#signInWrapper {
+  position: relative; 
+  margin-top: 8vh;
+  left: 50%;
+  width: 43%; 
+  transform: translateX(-50%);
+}
+
+#signIn {
+  position: relative;
+  width: 100%;
+  height: 5.5vh;
+  top: 0.3vh;
+  background-color: var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 0.4vh 0 0 var(--dark-primary);
+  color: whitesmoke;
+  font-family: 'Archive', sans-serif;
+  border: 4px solid var(--dark-primary);
+  font-size: 1.1em;
+  transition: top 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  cursor: pointer;
+}
+#signIn:hover {
+  top: 0vh;
+  box-shadow: 0 0.7vh 0 0 var(--dark-primary)
+}
+#signIn:active {
+  border: 4px solid var(--dark-primary);
+  box-shadow: 0 0.1vh 0 0 var(--dark-primary);
+  top: 0.7vh;
+}
+
+#newWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  height: 2vh
+}
+
+#newCb {
+  display: inline-block;
+  width: 2vh;
+  height: 2vh;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: var(--dark-bg);
+  border: 3px solid var(--bg-light);
+  transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+  position: relative; /* for ::before to be positioned correctly */
+  overflow: hidden;
+}
+#newCb::before {
+  content: '';
+  position: absolute; 
+  opacity: 0;
+  top: 50%;           
+  left: 50%;
+  transform: translate(-50%, -50%);          
+  width: 80%;      
+  height: 80%;     
+  background-image: url(/static/media/icons/cbtrue.svg);
+  background-size: cover;   
+  background-position: center;
+  background-repeat: no-repeat; 
+  transition: opacity 0.4s ease-in-out
+}
+
+#newCb.checked::before {
+  opacity: 1;
+}
+
+#newL {
+  display: inline-block;
+  color: whitesmoke;
+  font-family: 'Agrandir', sans-serif;
+  font-size: 0.9em;
+  padding-left: 0.5vw;
+}
+
+#overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0;
+  position: fixed;
+  display: none;
+  transition: opacity 0.3s ease-in-out
+}
+
+#popUp {
+  width: 38vw;
+  height: 28vh;
+  background-color: var(--dark-bg);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid var(--bg);
+  border-radius: 20px;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease-in-out
+}
+
+#popUpHeading {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Agrandir', sans-serif;
+  color: white;
+  white-space: nowrap;
+  margin-top: 2.7vh;
+}
+
+#popUpBody {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-family: 'Agrandir', sans-serif;
+  width: 32vw;
+  margin-top: 8vh;
+  font-size: 1.2em
+}
+
+#errorCode {
+  position: absolute;
+  right: 1.5vh;
+  bottom: 1.5vh;
+  margin-bottom: 0;
+  color: white;
+  font-family: sans-serif;
+}
+.e {
+  color: var(--red)
+}
+
+#popUpYes {
+  position: relative;
+  width: 40%;
+  height: 5.5vh;
+  top: 16.3vh;
+  background-color: var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 0.4vh 0 0 var(--dark-primary);
+  color: whitesmoke;
+  font-family: 'Archive', sans-serif;
+  border: 4px solid var(--dark-primary);
+  font-size: 1.1em;
+  transition: top 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  cursor: pointer;
+  left: 2vw;
+  display: inline-block;
+}
+#popUpYes:hover {
+  top: 16vh;
+  box-shadow: 0 0.7vh 0 0 var(--dark-primary)
+}
+#popUpYes:active {
+  border: 4px solid var(--dark-primary);
+  box-shadow: 0 0.1vh 0 0 var(--dark-primary);
+  top: 16.7vh;
+}
+
+#popUpNo {
+  position: relative;
+  width: 40%;
+  height: 5.5vh;
+  top: 16.3vh;
+  background-color: var(--red);
+  border-radius: 10px;
+  box-shadow: 0 0.4vh 0 0 var(--dark-red);
+  color: whitesmoke;
+  font-family: 'Archive', sans-serif;
+  border: 4px solid var(--dark-red);
+  font-size: 1.1em;
+  transition: top 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 5vw;
+}
+#popUpNo:hover {
+  top: 16vh;
+  box-shadow: 0 0.7vh 0 0 var(--dark-red)
+}
+#popUpNo:active {
+  border: 4px solid var(--dark-red);
+  box-shadow: 0 0.1vh 0 0 var(--dark-red);
+  top: 16.7vh;
+}
+
+#testButton {
+  left: 30vw;
+  top: 50vh;
+  position:absolute;
+}

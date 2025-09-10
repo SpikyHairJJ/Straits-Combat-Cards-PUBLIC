@@ -49,12 +49,13 @@ body.no-animation {
 
 #versionNum {
   color: #4DF14F;
+  font-family: 'Agrandir', sans-serif;
   position: absolute;
   bottom: 0;          
   left: 0;            
   padding: 4px;      
   margin: 8px;
-  background-color: #FFFFFF;
+  background-color: white;
   border-radius: 4px;
   font-size: 1em;
   transition: opacity 1s ease-in-out;
@@ -80,7 +81,7 @@ body {
 
 body.solid-background {
   background-image: none;    /* Remove the image */
-  background-color: #0B1F30; /* The new solid color (e.g., a light blue) */
+  background-color: var(--dark-bg); /* The new solid color (e.g., a light blue) */
 }
 
 #titleAndDisclaimer {
@@ -152,6 +153,7 @@ body.solid-background {
 
 #toggleBodyAni {
   color: #4DF14F;
+  font-family: 'Agrandir', sans-serif;
   position: absolute;
   bottom: 0;          
   right: 0;            
